@@ -1,0 +1,239 @@
+:root {
+  --primary: #3f6ba3;
+  --secondary: #1e2228;
+  --tertiary: #8598b0;
+  --4: #4b5a68;
+  --5: #203c5c;
+  --white: #fff;
+  --background: #f8f9fa;
+}
+
+/* Reset CSS */
+* {
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos Padrão Global */
+a,
+li,
+button {
+  list-style-type: none;
+  text-decoration: none;
+}
+
+a,
+p {
+  color: var(--secondary);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--secondary);
+  font-size: 42px;
+  line-height: 58px;
+}
+
+/* Menu Hamburger */
+.checkboxtoggler {
+  width: 3em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7em;
+  cursor: pointer;
+}
+
+.line-1 {
+  background: var(--primary);
+  height: 0.3em;
+  border-radius: 10em;
+  transition-duration: 500ms;
+}
+
+.line-2 {
+  background: var(--primary);
+  height: 0.3em;
+  border-radius: 10em;
+  transition-duration: 500ms;
+}
+
+.line-3 {
+  background: var(--primary);
+  height: 0.3em;
+  border-radius: 10em;
+  transition-duration: 500ms;
+}
+
+#toggleChecker {
+  height: 3em;
+  width: 100%;
+  display: none;
+}
+
+#togglerLable {
+  display: none;
+}
+
+#toggleChecker:checked + #togglerLable .checkboxtoggler .line-1 {
+  -webkit-transform: rotate(45deg) translateY(0.7em) translateX(0.7em);
+  -ms-transform: rotate(45deg) translateY(0.7em) translateX(0.7em);
+  transform: rotate(45deg) translateY(0.7em) translateX(0.7em);
+}
+
+#toggleChecker:checked + #togglerLable .checkboxtoggler .line-2 {
+  -webkit-transform: rotate(-45deg) translateY(0em) translateX(0.1em);
+  -ms-transform: rotate(-45deg) translateY(0em) translateX(0.1em);
+  transform: rotate(-45deg) translateY(0em) translateX(0.1em);
+}
+
+#toggleChecker:checked + #togglerLable .checkboxtoggler .line-3 {
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+/* Margin Lateral Global */
+.container {
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Header | Navbar */
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 0;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  gap: 32px;
+}
+
+nav img {
+  width: 200px;
+  max-width: fit-content;
+}
+
+#home-active {
+  color: var(--primary);
+}
+
+/* Navbar Buttons */
+
+.buttons-nav {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+#btn-entrar {
+  padding: 14px;
+  border: 2px solid var(--primary);
+  border-radius: 6px;
+  color: var(--primary);
+}
+
+#btn-cadastrar {
+  padding: 14px;
+  background-color: var(--primary);
+  border-radius: 6px;
+  color: var(--white);
+}
+
+/* Hero Section */
+.hero-section {
+  background-color: var(--background);
+}
+
+.hero-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 102px;
+  padding: 108px 0;
+  align-items: center;
+}
+
+.hero-container img {
+  width: 100%;
+  max-width: fit-content;
+}
+
+.hero-content h1 {
+  padding-bottom: 45px;
+  font-weight: 500;
+}
+
+.hero-content span {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+#btn-adotar {
+  display: inline-flex;
+  padding: 16px 24px;
+  align-items: center;
+  background-color: var(--primary);
+  border: 1px solid var(--primary);
+  border-radius: 6px;
+  color: var(--white);
+  font-size: 18px;
+}
+
+#btn-adotar img {
+  margin-left: 12px;
+  width: 24px;
+  height: 24px;
+}
+
+/* Responsivo */
+@media screen and (max-width: 1300px) {
+  /* Menu Hamburger */
+  #togglerLable {
+    display: grid;
+  }
+
+  /* Navbar */
+  nav ul,
+  .buttons-nav {
+    display: none;
+  }
+
+  nav ul {
+    display: none;
+    flex-direction: column;
+    gap: 0px;
+    padding: 12px 0;
+    position: absolute;
+    top: 100px;
+    right: 0;
+    width: 100%;
+    z-index: 1;
+    background-color: #fff;
+    box-shadow: -9px 0 14px 0px rgb(0 0 0 / 6%);
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+
+  nav ul li {
+    padding: 10px 18px 10px 18px;
+    width: 100%;
+    align-items: center;
+    border-top: 1px solid #dddddd;
+  }
+
+  ul li:first-child {
+    border-top: none;
+  }
+}
