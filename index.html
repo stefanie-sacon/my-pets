@@ -6,29 +6,29 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="css/index.css" />
     <title>My Pet's</title>
   </head>
   <body>
     <header class="container">
       <nav>
-        <img src="/images/logo-2.png" alt="Logo My Pets" />
+        <img src="images/logo-2.png" alt="Logo My Pets" />
 
         <ul>
-          <li><a href="#" id="home-active">Home</a></li>
-          <li><a href="#">Quero adotar</a></li>
-          <li><a href="#">Quero doar</a></li>
+          <li><a href="#" id="home-nav-active">Home</a></li>
+          <li><a href="#">Pet's</a></li>
+          <li><a href="#">Doar</a></li>
           <li><a href="#">Pet's Perdidos</a></li>
-          <li><a href="#">ONGs/Protetores</a></li>
+          <li><a href="#">ONGs/Parceiros</a></li>
           <li><a href="#">Contato</a></li>
         </ul>
 
         <div class="buttons-nav">
           <a href="#" id="btn-entrar">Entrar</a>
-          <a href="#" id="btn-cadastrar">Cadastrar</a>
+          <a href="#" id="btn-cadastrar">Adotar aqui</a>
         </div>
 
         <input id="toggleChecker" type="checkbox" />
@@ -45,23 +45,59 @@
     <main>
       <section class="hero-section">
         <div class="container">
-          <div class="hero-container">
-            <div class="hero-content">
-              <h1>
-                O maior ato de <span>amor</span> é dar um lar a quem mais
-                precisa. <br />
-                Adote um pet e <span>mude</span> uma vida!
-              </h1>
-              <a id="btn-adotar" href="#">
-                Quero adotar
-                <img src="/images/paw-pet.svg" />
-              </a>
-            </div>
-
-            <img class="container" src="/images/hero-img.svg" />
+          <div class="hero-content">
+            <h1>
+              O maior ato de <span>amor</span> é dar um lar a quem <br />
+              mais
+              <span>precisa</span>
+            </h1>
+            <p>
+              O pet que você procura para alegrar sua família está aqui. <br />
+              Adote um pet e mude uma vida!
+            </p>
+            <a id="btn-adotar" href="#"> Quero adotar </a>
           </div>
         </div>
       </section>
+      <secton>
+        <div class="container">
+          <div class="question-container">
+            <div class="question-content">
+              <img src="images/paw-pet.svg" />
+              <h2>Por que adotar?</h2>
+            </div>
+            <div class="question-boxes">
+              <div class="question-box">
+                <img src="images/pet-adopt.svg" />
+                <h3>Salva vidas</h3>
+                <p>
+                  Ao adotar um animal de estimação, você está dando a ele uma
+                  segunda chance e salvando uma vida. Muitos animais estão à
+                  espera de um lar amoroso.
+                </p>
+              </div>
+              <div class="question-box">
+                <img src="images/pet-shelter.svg" />
+                <h3>Combate o abandono</h3>
+                <p>
+                  Escolher adotar um pet em um abrigo ao invés de comprá-lo,
+                  você ajuda a reduzir o número de animais abandonados e
+                  negligenciados.
+                </p>
+              </div>
+              <div class="question-box">
+                <img src="images/pet-love.svg" />
+                <h3>Amor incondicional</h3>
+                <p>
+                  Os animais de estimação oferecem amor incondicional. Eles se
+                  tornam parte da família e trazem alegria e companheirismo para
+                  o lar.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </secton>
     </main>
     <script src="js/index.js"></script>
   </body>
