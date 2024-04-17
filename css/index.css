@@ -125,6 +125,7 @@ nav {
   justify-content: space-between;
   padding: 16px 0;
   align-items: center;
+  background-color: var(--white);
 }
 
 nav ul {
@@ -178,7 +179,7 @@ nav img {
   background: url(/images/background-hero.jpg) no-repeat;
   background-position: center;
   background-size: cover;
-  padding: 302px 0;
+  padding: 308px 0;
 }
 
 .hero-content {
@@ -253,7 +254,66 @@ nav img {
 
 .question-box img {
   width: 100%;
-  max-width: 298px;
+  max-width: 228px;
+}
+
+/* Pets Section */
+.pets-section {
+  background: url(/images/bone-bg.png) no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.pets-container {
+  padding: 112px 0;
+}
+
+.pets-content {
+  display: grid;
+  gap: 12px;
+  place-items: center;
+  padding-bottom: 52px;
+}
+
+.pets-boxes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+  place-items: center;
+}
+
+.pet-box {
+  display: grid;
+  width: 396px;
+  background-color: var(--background);
+  border-radius: 20px;
+}
+
+.pet-box-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 28px 28px 28px;
+}
+
+.pet-box-content h3 {
+  font-size: 24px;
+}
+
+.pet-box a {
+  padding: 12px 12px;
+  align-self: flex-start;
+  background-color: var(--4);
+  border-radius: 8px;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.pet-box img {
+  width: 100%;
+  max-width: fit-content;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
 /* Responsivo */
@@ -268,9 +328,13 @@ nav img {
     max-width: 88%;
   }
 
+  .hero-section {
+    padding: 102px 0;
+  }
+
   .hero-content h1 {
-    max-width: 88%;
-    font-size: 54px;
+    max-width: 90%;
+    font-size: 42px;
   }
 }
 
