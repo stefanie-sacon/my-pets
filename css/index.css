@@ -260,7 +260,9 @@ nav img {
 /* Pets Section */
 .pets-container {
   padding: 112px 0;
-  background-image: url(/images/bone-bg.png);
+  background-image: url(/images/pet-background.png);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .pets-content {
@@ -399,21 +401,37 @@ nav img {
 }
 
 /* Donate Section */
-.donate-container {
+.donate-section {
+  background-color: var(--background);
   padding: 112px 0;
 }
 
-.donate-content {
+.donate-content-title {
   display: grid;
-  gap: 12px;
-  place-items: center;
-  padding-bottom: 52px;
+  gap: 16px;
+  padding-bottom: 24px;
+}
+
+.donate-container-boxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 24px;
+  padding-top: 42px;
 }
 
 .donate-boxes {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  place-items: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.donate-box {
+  display: flex;
+  align-items: center;
+}
+
+.donate-box img {
+  padding-right: 24px;
 }
 
 /* Responsivo */
@@ -453,6 +471,15 @@ nav img {
 
   .hero-content h1 {
     font-size: 46px;
+  }
+
+  .donate-section {
+    padding: 56px 0;
+  }
+
+  .donate-container-boxes {
+    grid-template-columns: 1fr;
+    place-items: center;
   }
 }
 
@@ -532,5 +559,44 @@ nav img {
 @media screen and (max-width: 600px) {
   .wrapper .carousel {
     grid-auto-columns: 100%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .donate-container-boxes img {
+    width: 386px;
+  }
+
+  .donate-box {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .donate-box img {
+    width: 120px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .donate-container-boxes img {
+    width: 340px;
+  }
+
+  .donate-box img {
+    width: 120px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .donate-container-boxes img {
+    width: 300px;
+  }
+
+  .donate-box img {
+    width: 120px;
+  }
+
+  .donate-content-title h2 {
+    font-size: 34px;
   }
 }
