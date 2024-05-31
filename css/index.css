@@ -164,32 +164,24 @@ li {
   );
 }
 
-.btn-sabermais {
-  padding: 12px 12px;
-  background-color: var(--4);
-  border-radius: 8px;
-  color: var(--white);
-  cursor: pointer;
-  margin-top: 12px;
-}
-
-.btn-sabermais:hover,
-#btn-ajudar:hover,
-#btn-vertodos:hover {
-  background-color: #6f7a85;
-}
-
-#btn-ajudar,
 #btn-vertodos {
   padding: 16px 24px;
   background-color: var(--4);
   border-radius: 6px;
+  border: 2px solid var(--4);
   color: var(--white);
   cursor: pointer;
   font-size: 18px;
 }
 
-.div-btns-vertodos-ajudar {
+#btn-vertodos:hover {
+  background-color: transparent;
+  border: 2px solid var(--4);
+  color: var(--4);
+  transition: 0.2s;
+}
+
+.div-btn-vertodos {
   display: flex;
   justify-content: center;
   margin-top: 18px;
@@ -290,7 +282,7 @@ nav img {
 
 /* Pets Section */
 .pets-container {
-  padding: 112px 0;
+  padding: 92px 0;
   background-image: url(/images/pet-background.png);
   background-size: cover;
   background-repeat: no-repeat;
@@ -383,11 +375,10 @@ nav img {
 
 .carousel .card {
   scroll-snap-align: start;
-  height: 398px;
+  height: 346px;
   list-style: none;
   background: #fff;
   cursor: pointer;
-  padding-bottom: 15px;
   flex-direction: column;
   border-radius: 8px;
   gap: 8px;
@@ -426,7 +417,7 @@ nav img {
 /* Donate Section */
 .donate-section {
   background-color: var(--background);
-  padding: 112px 0;
+  padding: 58px 0;
 }
 
 .donate-content-title {
@@ -440,12 +431,15 @@ nav img {
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   gap: 24px;
   padding-top: 42px;
+  align-items: center;
 }
 
 .donate-boxes {
   display: grid;
   justify-content: center;
+  gap: 12px;
   align-items: center;
+  padding-left: 34px;
 }
 
 .donate-box {
@@ -454,29 +448,86 @@ nav img {
 }
 
 .donate-box img {
+  width: 108px;
   padding-right: 24px;
 }
 
-/* ONGs e Parceiros Section */
-.ongs-container {
-  padding: 112px 0;
+#donate-img {
+  width: 550px;
 }
 
-.ongs-content {
+/* Pets Perdidos Section */
+.pets-perdidos-container {
+  padding: 92px 0;
+  background-color: rgb(255, 255, 255);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.pets-perdidos-title {
   display: grid;
-  place-items: center;
-  padding-bottom: 42px;
+  gap: 12px;
+  padding-bottom: 52px;
+  text-align: center;
 }
 
-.ongs-box {
+.pets-perdidos-boxes {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   place-items: center;
 }
 
-.ongs-box img {
-  width: 200px;
-  border-radius: 50%;
+.pets-perdidos-box {
+  margin-bottom: 32px;
+  background-color: var(--white);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.pets-perdidos-box img {
+  width: 300px;
+  height: 300px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.pets-perdidos-content {
+  display: grid;
+  padding: 6px 16px 16px 16px;
+  gap: 10px;
+  align-items: center;
+  -webkit-box-shadow: 0px 9px 31px -15px rgba(204, 204, 204, 1);
+  -moz-box-shadow: 0px 9px 31px -15px rgba(204, 204, 204, 1);
+  box-shadow: 0px 9px 31px -15px rgba(204, 204, 204, 1);
+}
+
+.pets-perdidos-content h3 {
+  font-size: 18px;
+}
+
+.pets-perdidos-hero {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pet-desaparecido {
+  background-color: rgb(255, 206, 206);
+  color: red;
+  padding: 4.5px;
+  border-radius: 4px;
+  font-size: 15px;
+}
+
+.pet-procurase {
+  background-color: rgb(206, 206, 206);
+  color: rgb(36, 36, 36);
+  padding: 4px;
+  border-radius: 4px;
+  font-size: 15px;
 }
 
 /* Responsivo */
@@ -525,6 +576,10 @@ nav img {
   .donate-container-boxes {
     grid-template-columns: 1fr;
     place-items: center;
+  }
+
+  .donate-boxes {
+    padding: 0;
   }
 }
 
@@ -608,7 +663,7 @@ nav img {
 }
 
 @media screen and (max-width: 425px) {
-  .donate-container-boxes img {
+  #donate-img {
     width: 386px;
   }
 
@@ -617,29 +672,17 @@ nav img {
     flex-direction: column;
     text-align: center;
   }
-
-  .donate-box img {
-    width: 120px;
-  }
 }
 
 @media screen and (max-width: 375px) {
-  .donate-container-boxes img {
+  #donate-img {
     width: 340px;
-  }
-
-  .donate-box img {
-    width: 120px;
   }
 }
 
 @media screen and (max-width: 320px) {
-  .donate-container-boxes img {
+  #donate-img {
     width: 300px;
-  }
-
-  .donate-box img {
-    width: 120px;
   }
 
   .donate-content-title h2 {
