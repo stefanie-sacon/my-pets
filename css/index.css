@@ -473,7 +473,7 @@ nav img {
 
 .pets-perdidos-boxes {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
   place-items: center;
 }
 
@@ -487,10 +487,11 @@ nav img {
 }
 
 .pets-perdidos-box img {
-  width: 300px;
-  height: 300px;
+  width: 280px;
+  height: 280px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  object-fit: cover;
 }
 
 .pets-perdidos-content {
@@ -528,6 +529,35 @@ nav img {
   padding: 4px;
   border-radius: 4px;
   font-size: 15px;
+}
+
+/* ONGs e Parceiros Section */
+.ongs-section {
+  background-color: var(--background);
+  padding: 58px 0;
+}
+
+.ongs-title {
+  display: grid;
+  gap: 12px;
+  padding-bottom: 52px;
+  text-align: center;
+}
+
+.ongs-boxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  place-items: center;
+}
+
+.ong-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.ong-box img {
+  width: 300px;
+  height: 300px;
 }
 
 /* Responsivo */
