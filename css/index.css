@@ -220,7 +220,7 @@ nav li a:hover {
   color: var(--primary);
 }
 
-nav img {
+.logo-img {
   width: 150px;
   max-width: fit-content;
 }
@@ -572,6 +572,7 @@ nav img {
 .ongs-boxes {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 12px;
   place-items: center;
 }
 
@@ -598,6 +599,15 @@ nav img {
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   cursor: pointer;
+}
+
+/* Footer */
+
+footer {
+  display: grid;
+  padding: 24px 0;
+  gap: 18px;
+  place-items: center;
 }
 
 /* Responsivo */
