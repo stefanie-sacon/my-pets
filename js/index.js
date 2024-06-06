@@ -84,112 +84,218 @@ function preencherCardsPets() {
 // Chamar a função para preencher os cards dos pets ao carregar a página
 preencherCardsPets();
 
-document.addEventListener("DOMContentLoaded", function () {
-  const toggleChecker = document.getElementById("toggleChecker");
-  const togglerLabel = document.getElementById("togglerLable");
-  const nav = document.querySelector("nav");
-  const navList = document.querySelector("nav ul");
+const petsPerdidos = [
+  {
+    nome: "Bela",
+    imagem: "images/pet-4.png",
+    bairro: "Loteamento Lorenzett",
+    status: "Desaparecido",
+  },
+  {
+    nome: "Sem nome",
+    imagem: "images/pet-1.png",
+    bairro: "Bairro Natureza",
+    status: "Procura-se dono",
+  },
+  {
+    nome: "Fred",
+    imagem: "images/pet-6.png",
+    bairro: "Bairro Santa Rita",
+    status: "Desaparecido",
+  },
+  {
+    nome: "Sem nome",
+    imagem: "images/pet-4.png",
+    bairro: "Bairro Santa Cruz",
+    status: "Procura-se dono",
+  },
+  {
+    nome: "Luna",
+    imagem: "images/pet-3.png",
+    bairro: "Bairro dos Estados",
+    status: "Desaparecido",
+  },
+  {
+    nome: "Pitoco",
+    imagem: "images/pet-2.png",
+    bairro: "Centro",
+    status: "Desaparecido",
+  },
+  {
+    nome: "Sem nome",
+    imagem: "images/pet-1.png",
+    bairro: "Bairro Nações",
+    status: "Procura-se dono",
+  },
+  {
+    nome: "Lupi",
+    imagem: "images/pet-5.png",
+    bairro: "Bairro Natureza",
+    status: "Desaparecido",
+  },
+  // Adicione mais objetos pet aqui
+];
 
-  toggleChecker.addEventListener("change", function () {
-    if (toggleChecker.checked) {
-      navList.classList.add("show");
+const petsPerdidosBoxes = document.querySelector(".pets-perdidos-boxes");
+
+function gerarPetPerdido(pet) {
+  const petBox = document.createElement("div");
+  petBox.classList.add("pets-perdidos-box");
+
+  const petImg = document.createElement("img");
+  petImg.src = pet.imagem;
+  petBox.appendChild(petImg);
+
+  const petContent = document.createElement("div");
+  petContent.classList.add("pets-perdidos-content");
+
+  const petNome = document.createElement("h3");
+  petNome.textContent = pet.nome;
+  petContent.appendChild(petNome);
+
+  const petHero = document.createElement("div");
+  petHero.classList.add("pets-perdidos-hero");
+
+  const petBairro = document.createElement("p");
+  petBairro.textContent = pet.bairro;
+  petHero.appendChild(petBairro);
+
+  const petStatus = document.createElement("span");
+  petStatus.classList.add(
+    pet.status === "Desaparecido" ? "pet-desaparecido" : "pet-procurase"
+  );
+  petStatus.textContent = pet.status;
+  petHero.appendChild(petStatus);
+
+  petContent.appendChild(petHero);
+  petBox.appendChild(petContent);
+
+  return petBox;
+}
+
+petsPerdidos.forEach((pet) => {
+  const petBox = gerarPetPerdido(pet);
+  petsPerdidosBoxes.appendChild(petBox);
+});
+
+// Adiciona um listener para quando o DOM estiver carregado completamente
+document.addEventListener("DOMContentLoaded", function () {
+  // Seleciona os elementos necessários
+  const toggleCheckbox = document.getElementById("toggleChecker");
+  const toggleLabel = document.getElementById("togglerLable");
+  const navegacao = document.querySelector("nav");
+  const listaNavegacao = document.querySelector("nav ul");
+
+  // Adiciona um listener para o checkbox de alternar menu
+  toggleCheckbox.addEventListener("change", function () {
+    if (toggleCheckbox.checked) {
+      // Exibe a lista de navegação
+      listaNavegacao.classList.add("show");
     } else {
-      navList.classList.remove("show");
+      // Oculta a lista de navegação
+      listaNavegacao.classList.remove("show");
     }
   });
 });
 
-const wrapper = document.querySelector(".wrapper");
-const carousel = document.querySelector(".carousel");
-const firstCardWidth = carousel.querySelector(".card").offsetWidth;
-const arrowBtns = document.querySelectorAll(".wrapper i");
-const carouselChildrens = [...carousel.children];
+// Seleciona os elementos do carrossel
+const container = document.querySelector(".wrapper");
+const carrossel = document.querySelector(".carousel");
+const larguraPrimeiroCard = carrossel.querySelector(".card").offsetWidth;
+const botoesSeta = document.querySelectorAll(".wrapper i");
+const elementosCarrossel = [...carrossel.children]; // Converte para array
 
-let isDragging = false,
-  isAutoPlay = true,
-  startX,
-  startScrollLeft,
-  timeoutId;
+let estaSendoArrastado = false,
+  autoplayHabilitado = true,
+  posicaoInicialX,
+  scrollEsquerdaInicial,
+  idTimeout;
 
-// Get the number of cards that can fit in the carousel at once
-let cardPerView = Math.round(carousel.offsetWidth / firstCardWidth);
+// Define o número de cards que cabem no carrossel por vez
+let cardsPorVisivel = Math.round(carrossel.offsetWidth / larguraPrimeiroCard);
 
-// Insert copies of the last few cards to beginning of carousel for infinite scrolling
-carouselChildrens
-  .slice(-cardPerView)
+// Adiciona cópias dos últimos cards no início para simular infinito
+elementosCarrossel
+  .slice(-cardsPorVisivel)
   .reverse()
   .forEach((card) => {
-    carousel.insertAdjacentHTML("afterbegin", card.outerHTML);
+    carrossel.insertAdjacentHTML("afterbegin", card.outerHTML);
   });
 
-// Insert copies of the first few cards to end of carousel for infinite scrolling
-carouselChildrens.slice(0, cardPerView).forEach((card) => {
-  carousel.insertAdjacentHTML("beforeend", card.outerHTML);
+// Adiciona cópias dos primeiros cards no final para simular infinito
+elementosCarrossel.slice(0, cardsPorVisivel).forEach((card) => {
+  carrossel.insertAdjacentHTML("beforeend", card.outerHTML);
 });
 
-// Scroll the carousel at appropriate postition to hide first few duplicate cards on Firefox
-carousel.classList.add("no-transition");
-carousel.scrollLeft = carousel.offsetWidth;
-carousel.classList.remove("no-transition");
+// Corrige deslocamento inicial em Firefox
+carrossel.classList.add("no-transition");
+carrossel.scrollLeft = carrossel.offsetWidth;
+carrossel.classList.remove("no-transition");
 
-// Add event listeners for the arrow buttons to scroll the carousel left and right
-arrowBtns.forEach((btn) => {
+// Adiciona listeners para os botões de seta
+botoesSeta.forEach((btn) => {
   btn.addEventListener("click", () => {
-    carousel.scrollLeft += btn.id == "left" ? -firstCardWidth : firstCardWidth;
+    carrossel.scrollLeft +=
+      btn.id === "left" ? -larguraPrimeiroCard : larguraPrimeiroCard;
   });
 });
 
-const dragStart = (e) => {
-  isDragging = true;
-  carousel.classList.add("dragging");
-  // Records the initial cursor and scroll position of the carousel
-  startX = e.pageX;
-  startScrollLeft = carousel.scrollLeft;
+const iniciarArrastar = (e) => {
+  estaSendoArrastado = true;
+  carrossel.classList.add("dragging");
+  // Captura a posição inicial do cursor e scroll do carrossel
+  posicaoInicialX = e.pageX;
+  scrollEsquerdaInicial = carrossel.scrollLeft;
 };
 
-const dragging = (e) => {
-  if (!isDragging) return; // if isDragging is false return from here
-  // Updates the scroll position of the carousel based on the cursor movement
-  carousel.scrollLeft = startScrollLeft - (e.pageX - startX);
+const arrastando = (e) => {
+  if (!estaSendoArrastado) return;
+  // Atualiza a posição do scroll baseado no movimento do cursor
+  carrossel.scrollLeft = scrollEsquerdaInicial - (e.pageX - posicaoInicialX);
 };
 
-const dragStop = () => {
-  isDragging = false;
-  carousel.classList.remove("dragging");
+const pararArrastar = () => {
+  estaSendoArrastado = false;
+  carrossel.classList.remove("dragging");
 };
 
-const infiniteScroll = () => {
-  // If the carousel is at the beginning, scroll to the end
-  if (carousel.scrollLeft === 0) {
-    carousel.classList.add("no-transition");
-    carousel.scrollLeft = carousel.scrollWidth - 2 * carousel.offsetWidth;
-    carousel.classList.remove("no-transition");
+const scrollInfinito = () => {
+  // Se o carrossel estiver no início, move para o final
+  if (carrossel.scrollLeft === 0) {
+    carrossel.classList.add("no-transition");
+    carrossel.scrollLeft = carrossel.scrollWidth - 2 * carrossel.offsetWidth;
+    carrossel.classList.remove("no-transition");
   }
-  // If the carousel is at the end, scroll to the beginning
+  // Se o carrossel estiver no final, move para o início
   else if (
-    Math.ceil(carousel.scrollLeft) ===
-    carousel.scrollWidth - carousel.offsetWidth
+    Math.ceil(carrossel.scrollLeft) ===
+    carrossel.scrollWidth - carrossel.offsetWidth
   ) {
-    carousel.classList.add("no-transition");
-    carousel.scrollLeft = carousel.offsetWidth;
-    carousel.classList.remove("no-transition");
+    carrossel.classList.add("no-transition");
+    carrossel.scrollLeft = carrossel.offsetWidth;
+    carrossel.classList.remove("no-transition");
   }
 
-  // Clear existing timeout & start autoplay if mouse is not hovering over carousel
-  clearTimeout(timeoutId);
-  if (!wrapper.matches(":hover")) autoPlay();
+  // Limpa timeout existente e inicia autoplay se mouse não estiver sobre o carrossel
+  clearTimeout(idTimeout);
+  if (!container.matches(":hover")) autoPlay();
 };
 
 const autoPlay = () => {
-  if (window.innerWidth < 800 || !isAutoPlay) return; // Return if window is smaller than 800 or isAutoPlay is false
-  // Autoplay the carousel after every 2500 ms
-  timeoutId = setTimeout(() => (carousel.scrollLeft += firstCardWidth), 2500);
+  if (window.innerWidth < 800 || !autoplayHabilitado) return;
+  // Inicia autoplay a cada 2.5 segundos
+  idTimeout = setTimeout(
+    () => (carrossel.scrollLeft += larguraPrimeiroCard),
+    2500
+  );
 };
-autoPlay();
 
-carousel.addEventListener("mousedown", dragStart);
-carousel.addEventListener("mousemove", dragging);
-document.addEventListener("mouseup", dragStop);
-carousel.addEventListener("scroll", infiniteScroll);
-wrapper.addEventListener("mouseenter", () => clearTimeout(timeoutId));
-wrapper.addEventListener("mouseleave", autoPlay);
+autoPlay(); // Inicia autoplay na inicialização
+
+// Adiciona listeners para eventos de mouse no carrossel
+carrossel.addEventListener("mousedown", iniciarArrastar);
+carrossel.addEventListener("mousemove", arrastando);
+document.addEventListener("mouseup", pararArrastar);
+carrossel.addEventListener("scroll", scrollInfinito);
+container.addEventListener("mouseenter", () => clearTimeout(idTimeout));
+container.addEventListener("mouseleave", autoPlay);

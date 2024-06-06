@@ -187,6 +187,21 @@ li {
   margin-top: 18px;
 }
 
+.btn-anunciar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 52px;
+}
+
+#btn-anunciar {
+  padding: 16px 24px;
+  background-color: var(--secondary);
+  color: var(--white);
+  text-align: center;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
 /* Header | Navbar */
 nav {
   display: flex;
@@ -457,18 +472,24 @@ nav img {
 }
 
 /* Pets Perdidos Section */
-.pets-perdidos-container {
+.pets-perdidos-section {
   padding: 92px 0;
   background-color: rgb(255, 255, 255);
   background-size: cover;
   background-repeat: no-repeat;
 }
 
+.pets-perdidos-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+}
+
 .pets-perdidos-title {
   display: grid;
-  gap: 12px;
-  padding-bottom: 52px;
   text-align: center;
+  gap: 12px;
 }
 
 .pets-perdidos-boxes {
@@ -484,6 +505,7 @@ nav img {
   border-top-right-radius: 8px;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
+  cursor: pointer;
 }
 
 .pets-perdidos-box img {
@@ -497,7 +519,7 @@ nav img {
 .pets-perdidos-content {
   display: grid;
   padding: 6px 16px 16px 16px;
-  gap: 10px;
+  gap: 4px;
   align-items: center;
   -webkit-box-shadow: 0px 9px 31px -15px rgba(204, 204, 204, 1);
   -moz-box-shadow: 0px 9px 31px -15px rgba(204, 204, 204, 1);
@@ -511,6 +533,7 @@ nav img {
 .pets-perdidos-hero {
   display: flex;
   flex-direction: row;
+  gap: 0.35rem;
   justify-content: space-between;
   align-items: center;
 }
@@ -533,7 +556,9 @@ nav img {
 
 /* ONGs e Parceiros Section */
 .ongs-section {
-  background-color: var(--background);
+  background-image: url(/images/pet-background.png);
+  background-size: cover;
+  background-repeat: no-repeat;
   padding: 58px 0;
 }
 
@@ -553,11 +578,26 @@ nav img {
 .ong-box {
   display: flex;
   flex-direction: column;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 .ong-box img {
   width: 300px;
   height: 300px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.ong-box a {
+  padding: 16px;
+  text-align: center;
+  background-color: var(--white);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  cursor: pointer;
 }
 
 /* Responsivo */
