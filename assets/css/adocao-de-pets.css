@@ -1,0 +1,50 @@
+.adocao-pets-section {
+  padding: 92px 0;
+  background-image: url(/assets/images/pet-background.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.adocao-title {
+  display: grid;
+  gap: 12px;
+  padding-bottom: 56px;
+  text-align: center;
+}
+
+.adocao-pets-boxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 16px;
+}
+
+.adocao-pets-box {
+  background-color: var(--white);
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.adocao-pets-box img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.adocao-pets-content-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px;
+}
+
+.adocao-pets-content-box h2 {
+  font-weight: 500;
+  font-size: 24px;
+}
+
+.adocao-pets-content-box p {
+  color: #6a6d78;
+}
