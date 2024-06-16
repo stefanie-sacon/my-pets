@@ -1,45 +1,15 @@
-// Dados dos pets
-const petsData = [
-  {
-    nome: "Blanche Pearson",
-    imagem: "assets/images/pet-6.png",
-    idade: "2 anos",
-    porte: "Pequeno",
-  },
-  {
-    nome: "Joenas Brauers",
-    imagem: "assets/images/pet-5.png",
-    idade: "3 anos",
-    porte: "Pequeno",
-  },
-  {
-    nome: "Lariach French",
-    imagem: "assets/images/pet-4.png",
-    idade: "5 anos",
-    porte: "Pequeno",
-  },
-  {
-    nome: "James Khosravi",
-    imagem: "assets/images/pet-3.png",
-    idade: "4 anos",
-    porte: "Médio",
-  },
-  {
-    nome: "Kristina Zasiadko",
-    imagem: "assets/images/pet-2.png",
-    idade: "8 anos",
-    porte: "Médio",
-  },
-  {
-    nome: "Donald Horton",
-    imagem: "assets/images/pet-1.png",
-    idade: "6 anos",
-    porte: "Grande",
-  },
-];
+function obterPorteTitulo(porte) {
+  const titulos = {
+    ["SMALL"]: "Pequeno",
+    ["MEDIUM"]: "Médio",
+    ["BIG"]: "Grande",
+  };
+  return titulos[porte];
+}
 
 // Função para preencher os cards dos pets
-function preencherCardsPets() {
+async function preencherCardsPets() {
+  const petsData = await (await fetch("http://localhost:3000/pets")).json();
   const petCarousel = document.getElementById("petCarousel");
 
   // Limpar o conteúdo atual
@@ -56,20 +26,20 @@ function preencherCardsPets() {
       <div class="img">
         <img src="${pet.imagem}" alt="img" draggable="false" />
       </div>
-      <h2>${pet.nome}</h2>
+      <h2>${pet.name}</h2>
       <div class="info">
         <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
         <path
           fill="#4b5a68"
           d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zm64 80v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm128 0v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H336zM64 400v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H208zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H336c-8.8 0-16 7.2-16 16z"
         />
-      </svg> Idade: ${pet.idade}</p>
+      </svg> Idade: ${pet.age} anos</p>
         <p><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
         <path
           fill="#4b5a68"
           d="M226.5 92.9c14.3 42.9-.3 86.2-32.6 96.8s-70.1-15.6-84.4-58.5s.3-86.2 32.6-96.8s70.1 15.6 84.4 58.5zM100.4 198.6c18.9 32.4 14.3 70.1-10.2 84.1s-59.7-.9-78.5-33.3S-2.7 179.3 21.8 165.3s59.7 .9 78.5 33.3zM69.2 401.2C121.6 259.9 214.7 224 256 224s134.4 35.9 186.8 177.2c3.6 9.7 5.2 20.1 5.2 30.5v1.6c0 25.8-20.9 46.7-46.7 46.7c-11.5 0-22.9-1.4-34-4.2l-88-22c-15.3-3.8-31.3-3.8-46.6 0l-88 22c-11.1 2.8-22.5 4.2-34 4.2C84.9 480 64 459.1 64 433.3v-1.6c0-10.4 1.6-20.8 5.2-30.5zM421.8 282.7c-24.5-14-29.1-51.7-10.2-84.1s54-47.3 78.5-33.3s29.1 51.7 10.2 84.1s-54 47.3-78.5 33.3zM310.1 189.7c-32.3-10.6-46.9-53.9-32.6-96.8s52.1-69.1 84.4-58.5s46.9 53.9 32.6 96.8s-52.1 69.1-84.4 58.5z"
         />
-      </svg> Porte: ${pet.porte}</p>
+      </svg> Porte: ${obterPorteTitulo(pet.size)}</p>
      </div>
     `;
 

@@ -31,6 +31,9 @@ const petData = [
   { name: "Fido", image: "/assets/images/pet-2.png", ong: "Cão Amigo" },
   { name: "Lupi", image: "/assets/images/pet-3.png", ong: "ONG Ama" },
   { name: "Fido", image: "/assets/images/pet-2.png", ong: "Cão Amigo" },
+  { name: "Fido", image: "/assets/images/pet-2.png", ong: "Cão Amigo" },
+  { name: "Lupi", image: "/assets/images/pet-3.png", ong: "ONG Ama" },
+  { name: "Fido", image: "/assets/images/pet-2.png", ong: "Cão Amigo" },
   // Adicione mais objetos de animais de estimação aqui conforme necessário
 ];
 

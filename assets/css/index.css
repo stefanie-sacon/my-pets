@@ -574,7 +574,7 @@ nav li a:hover {
 .ongs-boxes {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
-  gap: 12px;
+  gap: 24px;
   place-items: center;
 }
 
@@ -588,7 +588,7 @@ nav li a:hover {
 }
 
 .ong-box img {
-  width: 300px;
+  width: 100%;
   height: 300px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
