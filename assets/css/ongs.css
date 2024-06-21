@@ -1,0 +1,51 @@
+.ongs-page-section {
+  padding: 92px 0;
+  background-color: rgb(255, 255, 255);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.ongs-page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+}
+
+.ongs-page-title {
+  display: grid;
+  text-align: center;
+  gap: 12px;
+}
+
+.ongs-boxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 24px;
+  place-items: center;
+}
+
+.ong-box {
+  display: flex;
+  flex-direction: column;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.ong-box img {
+  width: 100%;
+  height: 300px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.ong-box a {
+  padding: 16px;
+  text-align: center;
+  background-color: var(--white);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  cursor: pointer;
+}

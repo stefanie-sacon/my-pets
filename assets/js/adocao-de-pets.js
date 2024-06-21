@@ -20,20 +20,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
 const petData = [
   { name: "Lupi", image: "/assets/images/pet-3.png", ong: "ONG Ama" },
-  { name: "Fido", image: "/assets/images/pet-2.png", ong: "Cão Amigo" },
-  { name: "Lupi", image: "/assets/images/pet-3.png", ong: "ONG Ama" },
-  { name: "Fido", image: "/assets/images/pet-2.png", ong: "Cão Amigo" },
-  { name: "Lupi", image: "/assets/images/pet-3.png", ong: "ONG Ama" },
-  { name: "Fido", image: "/assets/images/pet-2.png", ong: "Cão Amigo" },
-  { name: "Lupi", image: "/assets/images/pet-3.png", ong: "ONG Ama" },
-  { name: "Fido", image: "/assets/images/pet-2.png", ong: "Cão Amigo" },
-  { name: "Lupi", image: "/assets/images/pet-3.png", ong: "ONG Ama" },
-  { name: "Fido", image: "/assets/images/pet-2.png", ong: "Cão Amigo" },
-  { name: "Lupi", image: "/assets/images/pet-3.png", ong: "ONG Ama" },
-  { name: "Fido", image: "/assets/images/pet-2.png", ong: "Cão Amigo" },
-  { name: "Fido", image: "/assets/images/pet-2.png", ong: "Cão Amigo" },
-  { name: "Lupi", image: "/assets/images/pet-3.png", ong: "ONG Ama" },
-  { name: "Fido", image: "/assets/images/pet-2.png", ong: "Cão Amigo" },
+  { name: "Pitoco", image: "/assets/images/pet-4.png", ong: "ONG Con Animal" },
+  { name: "Pretinho", image: "/assets/images/pet-3.png", ong: "ONG Laika" },
+  {
+    name: "Laura",
+    image: "/assets/images/pet-1.png",
+    ong: "ONG Focinho Carente",
+  },
+  { name: "Pipoca", image: "/assets/images/pet-6.png", ong: "ONG Ama" },
+  { name: "Fido", image: "/assets/images/pet-2.png", ong: "ONG Con Animal" },
+  { name: "Caramelo", image: "/assets/images/pet-1.png", ong: "ONG Ama" },
+  { name: "Fida", image: "/assets/images/pet-4.png", ong: "ONG Laika" },
+  {
+    name: "Luna",
+    image: "/assets/images/pet-3.png",
+    ong: "ONG Focinho Carente",
+  },
+  { name: "Lupa", image: "/assets/images/pet-5.png", ong: "ONG Laika" },
+  { name: "Thor", image: "/assets/images/pet-6.png", ong: "ONG Ama" },
+  { name: "Tufão", image: "/assets/images/pet-2.png", ong: "ONG Con Animal" },
+  {
+    name: "Mel",
+    image: "/assets/images/pet-3.png",
+    ong: "ONG Focinho Carente",
+  },
+  { name: "Alex", image: "/assets/images/pet-5.png", ong: "ONG Ama" },
+  { name: "Lilica", image: "/assets/images/pet-4.png", ong: "ONG Laika" },
   // Adicione mais objetos de animais de estimação aqui conforme necessário
 ];
 
@@ -49,7 +61,7 @@ petData.forEach((pet) => {
   const petContentBox = document.createElement("div");
   petContentBox.classList.add("adocao-pets-content-box");
 
-  const petName = document.createElement("h2");
+  const petName = document.createElement("h3");
   petName.textContent = pet.name;
 
   const petOng = document.createElement("p");
