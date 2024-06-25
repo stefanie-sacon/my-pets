@@ -79,12 +79,6 @@ const petsPerdidos = [
     bairro: "Bairro Santa Cruz",
     status: "Procura-se dono",
   },
-  {
-    nome: "Luna",
-    imagem: "assets/images/pet-3.png",
-    bairro: "Bairro dos Estados",
-    status: "Desaparecido",
-  },
 
   // Adicione mais objetos pet aqui
 ];

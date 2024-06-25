@@ -23,7 +23,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+label {
   color: var(--secondary);
   font-family: "Poppins", sans-serif;
   font-style: normal;
@@ -38,7 +39,12 @@ h2 {
   font-size: 38px;
 }
 
-p {
+p,
+input,
+legend,
+option,
+select,
+textarea {
   color: var(--secondary);
   font-size: 16px;
   font-weight: 400;
@@ -613,6 +619,12 @@ nav li a:hover {
   cursor: pointer;
 }
 
+.ong-box:hover {
+  -webkit-box-shadow: 0px 0px 51px -4px rgba(230, 230, 230, 1);
+  -moz-box-shadow: 0px 0px 51px -4px rgba(230, 230, 230, 1);
+  box-shadow: 0px 0px 51px -4px rgba(230, 230, 230, 1);
+}
+
 /* Footer */
 footer {
   display: grid;
@@ -622,15 +634,24 @@ footer {
 }
 
 /* Responsivo */
+
 @media screen and (max-width: 2560px) {
   .container {
-    max-width: 60%;
+    max-width: 80%;
+  }
+
+  .hero-section {
+    padding: 102px 0;
+  }
+
+  .hero-content h1 {
+    max-width: 80%;
   }
 }
 
 @media screen and (max-width: 1440px) {
   .container {
-    max-width: 88%;
+    max-width: 80%;
   }
 
   .hero-section {

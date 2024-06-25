@@ -7,8 +7,9 @@
 
 .adocao-title {
   display: grid;
-  gap: 12px;
+  gap: 24px;
   padding-bottom: 56px;
+  align-items: center;
   text-align: center;
 }
 
