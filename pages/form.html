@@ -13,9 +13,9 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
     />
-    <script src="/assets/js/index.js" defer></script>
     <link rel="stylesheet" href="/assets/css/index.css" />
     <link rel="stylesheet" href="/assets/css/form.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <title>Cadastro de Pets - My Pets</title>
     <link rel="icon" type="logo" href="/assets/images/logo.png" />
   </head>
@@ -52,7 +52,7 @@
       </nav>
     </header>
     <main>
-      <section>
+      <section class="form-section">
         <div class="container">
           <div class="form-title">
             <h2>Cadastro de Pet's <br />Adoção e Mural de Pet's Perdidos</h2>
@@ -63,13 +63,26 @@
               <legend>Informações do Pet</legend>
 
               <div class="form-group">
+                <label for="status">Status do Pet:</label>
+                <select
+                  id="status"
+                  name="status"
+                  placeholder="Selecione o status do pet"
+                >
+                  <option value="adocao">Adoção</option>
+                  <option value="perdido">Perdido</option>
+                  <option value="procurando-tutor">Procurando tutor</option>
+                  <option value="encontrado">Encontrado</option>
+                </select>
+              </div>
+
+              <div class="form-group">
                 <label for="name">Nome:</label>
                 <input
                   type="text"
                   id="name"
                   name="name"
                   placeholder="Informe o nome do pet"
-                  required
                 />
               </div>
 
@@ -80,36 +93,12 @@
                   id="image_url"
                   name="image_url"
                   placeholder="Cole a URL da imagem do pet"
-                  required
-                />
-              </div>
-
-              <div class="form-group">
-                <label for="status">Status do Pet:</label>
-                <select id="status" name="status required">
-                  <option value="">Selecione o status do pet</option>
-                  <option value="adocao">Adoção</option>
-                  <option value="perdido">Perdido</option>
-                  <option value="procurando-tutor">Procurando tutor</option>
-                  <option value="encontrado">Encontrado</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="age">Idade (aproximada):</label>
-                <input
-                  type="number"
-                  id="age"
-                  name="age"
-                  min="1"
-                  placeholder="Idade em anos. Ex: 3"
                 />
               </div>
 
               <div class="form-group">
                 <label for="size">Porte:</label>
-                <select id="size" name="size" required>
-                  <option value="">Selecione o porte</option>
+                <select id="size" name="size" placeholder="Selecione o porte">
                   <option value="pequeno">Pequeno</option>
                   <option value="medio">Médio</option>
                   <option value="grande">Grande</option>
@@ -118,27 +107,19 @@
 
               <div class="form-group">
                 <label for="gender">Sexo:</label>
-                <select id="gender" name="gender" required>
-                  <option value="">Selecione o sexo</option>
+                <select
+                  id="gender"
+                  name="gender"
+                  placeholder="Selecione o sexo"
+                >
                   <option value="macho">Fêmea</option>
                   <option value="femea">Macho</option>
                 </select>
               </div>
 
               <div class="form-group">
-                <label for="kind">Espécie:</label>
-                <select id="kind" name="kind" required>
-                  <option value="">Selecione a espécie</option>
-                  <option value="cachorro">Cachorro</option>
-                  <option value="gato">Gato</option>
-                  <option value="outro">Outro</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="race">Raça (opcional):</label>
-                <select id="race" name="race">
-                  <option value="">Selecione a raça</option>
+                <label for="race">Raça:</label>
+                <select id="race" name="race" placeholder="Selecione a raça">
                   <option value="bulldog">Bulldog</option>
                   <option value="dachshund">Dachshund</option>
                   <option value="golden-retriever">Golden Retriever</option>
@@ -158,7 +139,18 @@
               </div>
 
               <div class="form-group">
-                <label for="color">Cor (opcional):</label>
+                <label for="age">Idade (aproximada):</label>
+                <input
+                  type="number"
+                  id="age"
+                  name="age"
+                  min="1"
+                  placeholder="Idade em anos. Ex: 3"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="color">Cor:</label>
                 <input
                   type="text"
                   id="color"
@@ -168,22 +160,32 @@
               </div>
 
               <div class="form-group">
-                <label for="address">Endereço (opcional):</label>
+                <label for="address">Endereço:</label>
                 <textarea
                   id="address"
                   name="address"
                   placeholder="Onde o pet foi encontrado ou visto pela última vez"
                 ></textarea>
               </div>
-              <div class="button-form">
-                <button id="btn-anunciar" type="submit">Cadastrar Pet</button>
+              <div class="form-group">
+                <label for="about">Sobre:</label>
+                <textarea
+                  id="about"
+                  name="about"
+                  placeholder="Observações sobre o pet"
+                ></textarea>
               </div>
             </fieldset>
+            <div class="button-form">
+              <button id="btn-cadastrar" type="submit">Cadastrar Pet</button>
+            </div>
           </form>
         </div>
       </section>
     </main>
+    <script src="/assets/js/form.js"></script>
   </body>
+
   <footer>
     <img class="logo-img" src="/assets/images/logo-2.png" alt="Logo My Pets" />
     <p>© 2024 - Todos os direitos reservados.</p>

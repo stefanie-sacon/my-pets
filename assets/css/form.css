@@ -1,3 +1,23 @@
+:root {
+  --primary: #3f6ba3;
+  --secondary: #1e2228;
+  --tertiary: #8598b0;
+  --4: #4b5a68;
+  --5: #203c5c;
+  --white: #fff;
+  --background: #f8f9fa;
+}
+
+* {
+  list-style: none;
+  outline: none;
+}
+
+.form-section {
+  padding: 56px 0;
+  background-color: var(--white);
+}
+
 .form-title {
   display: grid;
   gap: 24px;
@@ -8,7 +28,7 @@
 }
 
 fieldset {
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
   padding: 20px;
   margin-bottom: 20px;
 }
@@ -16,6 +36,7 @@ fieldset {
 legend {
   padding: 0 10px;
   margin-bottom: 10px;
+  font-weight: 500;
 }
 
 .form-group {
@@ -24,11 +45,25 @@ legend {
 
 input,
 select,
-textarea {
+textarea,
+select,
+textarea,
+option {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
   width: 100%;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+::placeholder,
+.placeholder-shown {
+  color: #ccc;
+}
+select.placeholder-hidden {
+  color: black;
 }
 
 textarea {
@@ -41,7 +76,23 @@ textarea {
   justify-content: center;
 }
 
-#btn-anunciar {
+#btn-cadastrar {
+  padding: 16px 24px;
+  background-color: var(--secondary);
+  color: var(--white);
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 500;
+  text-align: center;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#btn-cadastrar:hover {
+  padding: 16px 24px;
+  background-color: var(--white);
+  color: var(--secondary);
+  border: 2px solid var(--secondary);
+  text-align: center;
+  border-radius: 6px;
+  cursor: pointer;
 }

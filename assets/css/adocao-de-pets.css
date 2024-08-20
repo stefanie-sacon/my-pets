@@ -15,8 +15,8 @@
 
 .adocao-pets-boxes {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 32px;
 }
 
 .adocao-pets-box {
