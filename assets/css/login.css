@@ -1,68 +1,178 @@
+:root {
+  --primary: #3f6ba3;
+  --secondary: #1e2228;
+  --tertiary: #8598b0;
+  --4: #4b5a68;
+  --5: #203c5c;
+  --white: #fff;
+  --background: #f8f9fa;
+}
+
+/* Reset CSS */
+* {
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  background-color: var(--background);
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0 30px; /* Adiciona um padding para evitar que o conteúdo encoste nas bordas em telas pequenas */
 }
 
 .container {
-  width: 500px;
-  margin: 50px auto;
-  background-color: #fff;
-  padding: 30px;
-  border-radius: 10px;
+  width: 100%;
+  max-width: 460px;
+  background-color: white;
+  padding: 32px;
+  border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+.login-form {
+  padding: 24px 0;
+}
+
+.form-section {
+  display: flex;
+}
+
+img {
+  display: block;
+  width: 250px;
+  max-width: 100%; /* Garante que a imagem não ultrapasse a largura do contêiner */
+  height: auto;
+}
+
+h2 {
   text-align: center;
   margin-bottom: 20px;
 }
 
-.form-container {
+.login-title {
   display: flex;
   flex-direction: column;
+  gap: 32px;
   align-items: center;
+  padding-bottom: 16px;
 }
 
 form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="tel"] {
   width: 100%;
-  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  outline: none;
+}
+
+button {
+  padding: 12px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: rgb(86, 124, 171);
+}
+
+a {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--secondary);
+}
+
+a:hover {
+  color: var(--primary);
 }
 
 label {
-  display: block;
-  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-bottom: 15px;
+label input {
+  margin-right: 10px;
 }
 
-button[type="submit"] {
-  background-color: #28a745;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.inputs-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.acoes {
-  text-align: center;
+.input-form {
+  display: flex;
+  gap: 8px;
 }
 
-.acoes a {
-  color: #28a745;
-  text-decoration: none;
+.links-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-/* Estilos iniciais para formulário de cadastro (escondido) */
-#cadastroForm {
+#linea {
+  border: 1px solid #eee;
+}
+
+#register-form,
+#password-reset-form,
+#password-change-form {
   display: none;
+}
+
+@media (max-width: 400px) {
+  .container {
+    padding: 15px;
+    max-width: 100%; /* Permite que o contêiner ocupe toda a largura em telas pequenas */
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  input[type="email"],
+  input[type="password"],
+  input[type="text"],
+  input[type="tel"] {
+    padding: 10px;
+    font-size: 0.8rem;
+  }
+
+  button {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  label {
+    font-size: 0.8rem;
+  }
+
+  .forgot-password,
+  a {
+    font-size: 0.9rem;
+  }
 }

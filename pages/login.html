@@ -1,60 +1,91 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Adote um Amigo</title>
+    <title>My Pet's - Login/Cadastro</title>
     <link rel="stylesheet" href="/assets/css/login.css" />
-    <link rel="stylesheet" href="/assets/css/index.css" />
   </head>
   <body>
     <div class="container">
-      <img id="logo-login" src="/assets/images/logo-2.png" />
-      <div class="form-container">
-        <form id="loginForm">
-          <h3>Faça seu login</h3>
-          <label for="emailLogin">Email:</label>
-          <input type="email" id="emailLogin" name="emailLogin" required />
-          <label for="senhaLogin">Senha:</label>
-          <input type="password" id="senhaLogin" name="senhaLogin" required />
+      <div class="login-form" id="login-form">
+        <div class="login-title">
+          <img src="/assets/images/logo-2.png" alt="My Pet's" />
+          <h2>Faça seu login</h2>
+        </div>
+        <form>
+          <input type="email" placeholder="E-mail" required />
+          <input type="password" placeholder="Senha" required />
           <button type="submit">Entrar</button>
-          <a href="#">Esqueci minha senha?</a>
-        </form>
-
-        <form id="cadastroForm">
-          <h2>Cadastrar</h2>
-          <label for="nome">Nome completo:</label>
-          <input type="text" id="nome" name="nome" required />
-          <label for="emailCadastro">Email:</label>
-          <input
-            type="email"
-            id="emailCadastro"
-            name="emailCadastro"
-            required
-          />
-          <label for="senhaCadastro">Senha:</label>
-          <input
-            type="password"
-            id="senhaCadastro"
-            name="senhaCadastro"
-            required
-          />
-          <label for="confirmarSenha">Confirmar senha:</label>
-          <input
-            type="password"
-            id="confirmarSenha"
-            name="confirmarSenha"
-            required
-          />
-          <button type="submit">Cadastrar</button>
+          <div id="linea"></div>
+          <div class="links-form">
+            <a href="#" class="forgot-password">Esqueceu a senha?</a>
+            <a href="#" class="show-register">Não possui conta? Cadastrar</a>
+          </div>
         </form>
       </div>
 
-      <div class="acoes">
-        <p>
-          Ainda não tem conta? <a href="#" id="abrirCadastro">Cadastre-se</a>
-        </p>
-        <p>Já tem conta? <a href="index.html" id="abrirLogin">Entre</a></p>
+      <div class="form-section" id="register-form" style="display: none">
+        <div class="login-title">
+          <img src="/assets/images/logo-2.png" alt="My Pet's" />
+          <h2>Faça seu cadastro</h2>
+        </div>
+        <form>
+          <div class="inputs-form">
+            <div class="input-form">
+              <input type="text" placeholder="Nome" required />
+              <input type="text" placeholder="Sobrenome" required />
+            </div>
+            <div class="input-form">
+              <input type="email" placeholder="E-mail" required />
+              <input type="tel" placeholder="Telefone" required />
+            </div>
+            <div class="input-form">
+              <input type="password" placeholder="Senha" required />
+              <input type="password" placeholder="Repita a senha" required />
+            </div>
+          </div>
+          <label>
+            <input type="checkbox" required /> Estou de acordo com os Termos e
+            Condições
+          </label>
+          <button type="submit">Cadastrar</button>
+          <div id="linea"></div>
+          <div class="links-form">
+            <a href="#" class="forgot-password">Esqueceu a senha?</a>
+            <a href="#" class="show-login">Já possui conta? Entrar</a>
+          </div>
+        </form>
+      </div>
+
+      <div class="form-section" id="password-reset-form" style="display: none">
+        <div class="login-title">
+          <img src="/assets/images/logo-2.png" alt="My Pet's" />
+          <h2>Recuperar senha</h2>
+        </div>
+        <form>
+          <input type="email" placeholder="Digite seu e-mail" required />
+          <button type="submit">Enviar link</button>
+          <div id="linea"></div>
+          <div class="links-form">
+            <a href="#" class="show-login">Já possui conta? Entrar</a>
+            <a href="#" class="show-register">Não possui conta? Cadastrar</a>
+          </div>
+        </form>
+      </div>
+
+      <div class="form-section" id="password-change-form" style="display: none">
+        <img src="/assets/images/logo-2.png" alt="My Pet's" />
+        <h2>Alterar Senha</h2>
+        <form>
+          <input type="password" placeholder="Nova senha" required />
+          <input type="password" placeholder="Repetir nova senha" required />
+          <button type="submit">Alterar senha</button>
+          <div class="links-form">
+            <a href="#" class="show-login">Já possui conta? Entrar</a>
+            <a href="#" class="show-register">Não possui conta? Cadastrar</a>
+          </div>
+        </form>
       </div>
     </div>
 
