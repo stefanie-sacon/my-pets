@@ -19,7 +19,7 @@ export const Index = () => {
                 <br />
                 Adote um pet e mude uma vida!
               </p>
-              <a id="btn-adotar" href="/pages/adocao-de-pets.html">
+              <a id="btn-adotar" href="/pets">
                 Quero adotar
               </a>
             </div>
@@ -77,7 +77,7 @@ export const Index = () => {
             </div>
           </div>
           <div className="div-btn-vertodos">
-            <a id="btn-vertodos" href="/pages/adocao-de-pets.html">
+            <a id="btn-vertodos" href="">
               Ver todos
             </a>
           </div>

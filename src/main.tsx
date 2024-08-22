@@ -5,6 +5,9 @@ import "./index.css";
 import { Index } from "./pages";
 import { Pets } from "./pages/pets";
 import { Doacao } from "./pages/doacao";
+import { PetsPerdidos } from "./pages/petsPerdidos";
+import { Ongs } from "./pages/ongs";
+import { Form } from "./pages/form";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +21,22 @@ const router = createBrowserRouter([
   {
     path: "/doacao",
     element: <Doacao />,
+  },
+  {
+    path: "/petsperdidos",
+    element: <PetsPerdidos />,
+  },
+  {
+    path: "/ongs",
+    element: <Ongs />,
+  },
+  {
+    path: "/cadastro",
+    element: <Form />,
+  },
+  {
+    path: "/cadastro",
+    element: <Form />,
   },
 ]);
 
