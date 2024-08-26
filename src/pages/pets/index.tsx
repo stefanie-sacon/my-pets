@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import "./styles.css";
@@ -17,9 +18,9 @@ export const Pets = () => {
                 continuidade a adoção do seu novo aumigo.
               </p>
               <div className="btn-anunciar">
-                <a href="/pages/form.html" id="btn-anunciar">
+                <Link to="/cadastro" id="btn-anunciar">
                   Cadastrar pet
-                </a>
+                </Link>
               </div>
             </div>
             <div className="adocao-pets-boxes"></div>

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 
@@ -18,7 +19,9 @@ export const PetsPerdidos = () => {
                 </p>
               </div>
               <div className="btn-anunciar">
-                <a id="btn-anunciar">Anunciar aqui</a>
+                <Link to="/cadastro" id="btn-anunciar">
+                  Anunciar aqui
+                </Link>
               </div>
               <div className="pets-perdidos-boxes"></div>
             </div>

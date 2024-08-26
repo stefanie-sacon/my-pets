@@ -1,40 +1,44 @@
+import { Link } from "react-router-dom";
+
 export const Header = () => {
   return (
     <header className="container">
       <nav>
-        <img
-          className="logo-img"
-          src="/assets/img/logo-2.png"
-          alt="Logo My Pets"
-        />
+        <Link to="/">
+          <img
+            className="logo-img"
+            src="/assets/img/logo-2.png"
+            alt="Logo My Pets"
+          />
+        </Link>
 
         <ul>
           <li>
-            <a href="index.html" id="home-nav-active">
+            <Link to="/" id="home-nav-active">
               Home
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/pages/adocao-de-pets.html">Pet's</a>
+            <Link to="/pets">Pet's</Link>
           </li>
           <li>
-            <a href="/pages/doar.html">Doar</a>
+            <Link to="/doacao">Doar</Link>
           </li>
           <li>
-            <a href="/pages/pets-perdidos.html">Pet's Perdidos</a>
+            <Link to="/petsperdidos">Pet's Perdidos</Link>
           </li>
           <li>
-            <a href="/pages/ongs.html">ONGs/Parceiros</a>
+            <Link to="/ongs">ONGs/Parceiros</Link>
           </li>
         </ul>
 
         <div className="buttons-nav">
-          <a href="#" id="btn-entrar">
+          <Link to="/login" id="btn-entrar">
             Entrar
-          </a>
-          <a href="/pages/adocao-de-pets.html" id="btn-adotaraqui">
+          </Link>
+          <Link to="/pets" id="btn-adotaraqui">
             Adotar aqui
-          </a>
+          </Link>
         </div>
 
         <input id="toggleChecker" type="checkbox" />

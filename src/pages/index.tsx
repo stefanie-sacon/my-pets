@@ -1,6 +1,7 @@
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
+import { Link } from "react-router-dom";
 
 export const Index = () => {
   return (
@@ -19,9 +20,10 @@ export const Index = () => {
                 <br />
                 Adote um pet e mude uma vida!
               </p>
-              <a id="btn-adotar" href="/pets">
+
+              <Link id="btn-adotar" to="/pets">
                 Quero adotar
-              </a>
+              </Link>
             </div>
           </div>
         </section>
@@ -77,9 +79,9 @@ export const Index = () => {
             </div>
           </div>
           <div className="div-btn-vertodos">
-            <a id="btn-vertodos" href="">
+            <Link id="btn-vertodos" to="/pets">
               Ver todos
-            </a>
+            </Link>
           </div>
         </section>
 
@@ -144,16 +146,16 @@ export const Index = () => {
                 <p>Seu pet desapareceu, ou encontrou um pet perdido?</p>
               </div>
               <div className="btn-anunciar">
-                <a href="/pages/form.html" id="btn-anunciar">
+                <Link to="/cadastro" id="btn-anunciar">
                   Anunciar aqui
-                </a>
+                </Link>
               </div>
               <div className="pets-perdidos-boxes"></div>
             </div>
             <div className="div-btn-vertodos">
-              <a id="btn-vertodos" href="/pages/pets-perdidos.html">
+              <Link id="btn-vertodos" to="/petsperdidos">
                 Ver todos
-              </a>
+              </Link>
             </div>
           </div>
         </section>
@@ -166,22 +168,22 @@ export const Index = () => {
             <div className="ongs-boxes">
               <div className="ong-box">
                 <img src="assets/img/ong-ama.jpg" alt="ONG Ama" />
-                <a href="/pages/ongs.html">Ver Informações</a>
+                <Link to="/ongs">Ver Informações</Link>
               </div>
               <div className="ong-box">
                 <img src="assets/img/ong-con.jpg" alt="ONG Con Animal" />
-                <a href="/pages/ongs.html">Ver Informações</a>
+                <Link to="/ongs">Ver Informações</Link>
               </div>
               <div className="ong-box">
                 <img src="assets/img/ong-laika.jpg" alt="ONG Laika" />
-                <a href="/pages/ongs.html">Ver Informações</a>
+                <Link to="/ongs">Ver Informações</Link>
               </div>
               <div className="ong-box">
                 <img
                   src="assets/img/focinhocarente.jpg"
                   alt="Projeto Focinho Carente"
                 />
-                <a href="/pages/ongs.html">Ver Informações</a>
+                <Link to="/ongs">Ver Informações</Link>
               </div>
             </div>
           </div>

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import "./styles.css";
@@ -17,7 +18,9 @@ export const Ongs = () => {
                   bem-estar dos animais.
                 </p>
                 <div className="btn-anunciar">
-                  <a id="btn-anunciar">Fazer parte</a>
+                  <Link to="" id="btn-anunciar">
+                    Fazer parte
+                  </Link>
                 </div>
               </div>
               <div className="ongs-page-boxes">
