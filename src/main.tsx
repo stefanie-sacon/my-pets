@@ -8,6 +8,9 @@ import { Doacao } from "./pages/doacao";
 import { PetsPerdidos } from "./pages/pets-perdidos";
 import { Ongs } from "./pages/ongs";
 import { Form } from "./pages/form";
+import { Login } from "./pages/login";
+import { Registro } from "./pages/registro";
+import { RedefinirSenha } from "./pages/redefinir-senha";
 
 const router = createBrowserRouter([
   {
@@ -31,8 +34,20 @@ const router = createBrowserRouter([
     element: <Ongs />,
   },
   {
-    path: "/cadastro",
+    path: "/cadastropets",
     element: <Form />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/registro",
+    element: <Registro />,
+  },
+  {
+    path: "/redefinirsenha",
+    element: <RedefinirSenha />,
   },
 ]);
 

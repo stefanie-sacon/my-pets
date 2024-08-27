@@ -1,0 +1,32 @@
+.form-section {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="tel"] {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.inputs-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input-form {
+  display: flex;
+  gap: 8px;
+}
+
+h2 {
+  font-size: 26px;
+}
