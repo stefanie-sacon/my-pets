@@ -1,19 +1,10 @@
-.form-section {
-  display: flex;
-  flex-direction: column;
-  padding: 32px;
-}
-
-input[type="email"],
-input[type="password"],
-input[type="text"],
-input[type="tel"] {
+.container-register {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1rem;
-  outline: none;
+  max-width: 466px;
+  background-color: #fff;
+  padding: 28px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .inputs-form {
@@ -25,8 +16,4 @@ input[type="tel"] {
 .input-form {
   display: flex;
   gap: 8px;
-}
-
-h2 {
-  font-size: 26px;
 }

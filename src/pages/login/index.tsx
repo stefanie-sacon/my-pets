@@ -3,8 +3,8 @@ import "./styles.css";
 
 export const Login = () => {
   return (
-    <main>
-      <div className="container">
+    <main className="main">
+      <div className="container-pages">
         <div>
           <div className="login-title">
             <img src="/assets/img/logo-2.png" alt="My Pet's" />
