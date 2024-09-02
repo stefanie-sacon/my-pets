@@ -146,7 +146,7 @@ export const Index = () => {
                 <p>Seu pet desapareceu, ou encontrou um pet perdido?</p>
               </div>
               <div className="btn-anunciar">
-                <Link to="/cadastro" id="btn-anunciar">
+                <Link to="/cadastropets" id="btn-anunciar">
                   Anunciar aqui
                 </Link>
               </div>

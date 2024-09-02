@@ -19,7 +19,7 @@ export const PetsPerdidos = () => {
                 </p>
               </div>
               <div className="btn-anunciar">
-                <Link to="/cadastro" id="btn-anunciar">
+                <Link to="/cadastropets" id="btn-anunciar">
                   Anunciar aqui
                 </Link>
               </div>
