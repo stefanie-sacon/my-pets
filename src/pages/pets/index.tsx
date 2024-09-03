@@ -4,26 +4,7 @@ import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { formatDistanceToNow } from "date-fns";
 import "./styles.css";
-
-// Definindo a interface Pet
-interface Pet {
-  id: string;
-  status: string;
-  name: string;
-  image_url: string;
-  size: string;
-  race: string;
-  gender: string;
-  age: number;
-  color: string;
-  deficiencia: string;
-  vacinado: string;
-  castrado: string;
-  address: string;
-  about: string;
-  kind: string;
-  created_at: string;
-}
+import { Pet } from "../../models/Pet";
 
 export const Pets = () => {
   const [pets, setPets] = useState<Pet[]>([]);
