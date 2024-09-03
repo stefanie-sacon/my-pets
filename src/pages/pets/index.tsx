@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
+import { formatDistanceToNow } from "date-fns";
 import "./styles.css";
 
 // Definindo a interface Pet
@@ -21,16 +22,20 @@ interface Pet {
   address: string;
   about: string;
   kind: string;
+  created_at: string;
 }
 
 export const Pets = () => {
-  // Definindo o estado com o tipo Pet[]
   const [pets, setPets] = useState<Pet[]>([]);
 
   useEffect(() => {
     fetch("http://localhost:3000/pets") // Substitua pela URL do seu backend
       .then((response) => response.json())
-      .then((data: Pet[]) => setPets(data))
+      .then((data: Pet[]) => {
+        // Filtrando pets com status "ADOPTION"
+        const adoptionPets = data.filter((pet) => pet.status === "ADOPTION");
+        setPets(adoptionPets);
+      })
       .catch((error) => console.error("Erro ao buscar pets:", error));
   }, []);
 
@@ -58,7 +63,12 @@ export const Pets = () => {
                 <div key={pet.id} className="pet-card">
                   <img src={pet.image_url} alt={pet.name} />
                   <h3>{pet.name}</h3>
-                  <p>Idade: {pet.age} anos</p>
+                  <p>
+                    {formatDistanceToNow(new Date(pet.created_at), {
+                      addSuffix: true,
+                    })}
+                  </p>{" "}
+                  {/* Data relativa sem prefixo */}
                   {/* Adicione outros detalhes do pet conforme necessário */}
                 </div>
               ))}

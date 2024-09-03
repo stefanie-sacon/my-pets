@@ -1,9 +1,8 @@
-import { useState } from "react"; // Importa o hook useState do React para gerenciar o estado do componente
-import { Footer } from "../../components/Footer"; // Importa o componente Footer
-import { Header } from "../../components/Header"; // Importa o componente Header
-import "./styles.css"; // Importa o arquivo de estilos CSS
+import { useState } from "react";
+import { Footer } from "../../components/Footer";
+import { Header } from "../../components/Header";
+import "./styles.css";
 
-// Define a interface FormData que especifica a estrutura dos dados do formulário
 interface FormData {
   status: string;
   name: string;
@@ -21,9 +20,7 @@ interface FormData {
   kind: string;
 }
 
-// Define o componente Form
 export const Form = () => {
-  // Cria o estado formData e a função setFormData para atualizar o estado
   const [formData, setFormData] = useState<FormData>({
     status: "",
     name: "",
@@ -41,33 +38,29 @@ export const Form = () => {
     kind: "",
   });
 
-  // Função para lidar com mudanças nos inputs do formulário
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
     >
   ) => {
-    const { name, value } = e.target; // Extrai o nome e o valor do input alterado
-    setFormData((prev) => ({ ...prev, [name]: value })); // Atualiza o estado com o novo valor
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Função para lidar com o envio do formulário
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault(); // Impede o comportamento padrão do formulário (recarregar a página)
+    e.preventDefault();
 
     try {
       const response = await fetch("http://localhost:3000/pets", {
-        method: "POST", // Define o método HTTP para o envio dos dados
+        method: "POST",
         headers: {
-          "Content-Type": "application/json", // Define o tipo de conteúdo como JSON
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData), // Converte o objeto formData em uma string JSON para o corpo da requisição
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
-        // Se a resposta for bem-sucedida (status HTTP 2xx)
-        alert("Pet cadastrado com sucesso!"); // Exibe um alerta de sucesso
-        // Limpa o formulário após o sucesso
+        alert("Pet cadastrado com sucesso!");
         setFormData({
           status: "",
           name: "",
@@ -85,23 +78,21 @@ export const Form = () => {
           kind: "",
         });
       } else {
-        // Se a resposta não for bem-sucedida (status HTTP 4xx ou 5xx)
-        const errorData = await response.json(); // Lê a resposta de erro do servidor
-        console.error("Erro no servidor:", errorData); // Exibe o erro no console
+        const errorData = await response.json();
+        console.error("Erro no servidor:", errorData);
         alert(
           "Ocorreu um erro ao cadastrar o pet. Detalhes: " + errorData.message
-        ); // Exibe um alerta com detalhes do erro
+        );
       }
     } catch (error) {
-      // Captura qualquer erro que ocorra durante a requisição
-      console.error("Erro ao cadastrar o pet:", error); // Exibe o erro no console
-      alert("Ocorreu um erro ao cadastrar o pet. Tente novamente."); // Exibe um alerta de erro genérico
+      console.error("Erro ao cadastrar o pet:", error);
+      alert("Ocorreu um erro ao cadastrar o pet. Tente novamente.");
     }
   };
 
   return (
     <>
-      <Header /> {/* Renderiza o componente Header */}
+      <Header />
       <main>
         <section className="form-section">
           <div className="container">
@@ -117,7 +108,6 @@ export const Form = () => {
                 <legend>Informações do Pet</legend>
 
                 <div className="forms-groups">
-                  {/* Status do Pet */}
                   <div className="form-group">
                     <label htmlFor="status">Status do Pet:</label>
                     <select
@@ -126,7 +116,9 @@ export const Form = () => {
                       value={formData.status}
                       onChange={handleChange}
                     >
-                      <option value="">Selecione o status do pet</option>
+                      <option value="" disabled>
+                        Selecione o status do pet
+                      </option>
                       <option value="ADOPTION">Adoção</option>
                       <option value="LOST">Perdido</option>
                       <option value="LOOKING_FOR_OWNER">
@@ -136,7 +128,6 @@ export const Form = () => {
                     </select>
                   </div>
 
-                  {/* Tipo de Pet */}
                   <div className="form-group">
                     <label htmlFor="kind">Tipo de Pet:</label>
                     <select
@@ -145,7 +136,9 @@ export const Form = () => {
                       value={formData.kind}
                       onChange={handleChange}
                     >
-                      <option value="">Selecione o tipo de pet</option>
+                      <option value="" disabled>
+                        Selecione o tipo de pet
+                      </option>
                       <option value="DOG">Cachorro</option>
                       <option value="CAT">Gato</option>
                       <option value="OTHER">Outro</option>
@@ -154,7 +147,6 @@ export const Form = () => {
                 </div>
 
                 <div className="forms-groups">
-                  {/* Nome do Pet */}
                   <div className="form-group">
                     <label htmlFor="name">Nome:</label>
                     <input
@@ -166,7 +158,6 @@ export const Form = () => {
                       placeholder="Informe o nome do pet"
                     />
                   </div>
-                  {/* URL da Imagem */}
                   <div className="form-group">
                     <label htmlFor="image_url">URL da Imagem:</label>
                     <input
@@ -181,7 +172,6 @@ export const Form = () => {
                 </div>
 
                 <div className="forms-groups">
-                  {/* Porte do Pet */}
                   <div className="form-group">
                     <label htmlFor="size">Porte:</label>
                     <select
@@ -190,14 +180,15 @@ export const Form = () => {
                       value={formData.size}
                       onChange={handleChange}
                     >
-                      <option value="">Selecione o porte</option>
+                      <option value="" disabled>
+                        Selecione o porte
+                      </option>
                       <option value="SMALL">Pequeno</option>
                       <option value="MEDIUM">Médio</option>
                       <option value="BIG">Grande</option>
                     </select>
                   </div>
 
-                  {/* Raça do Pet */}
                   <div className="form-group">
                     <label htmlFor="race">Raça:</label>
                     <select
@@ -206,7 +197,9 @@ export const Form = () => {
                       value={formData.race}
                       onChange={handleChange}
                     >
-                      <option value="">Selecione a raça</option>
+                      <option value="" disabled>
+                        Selecione a raça
+                      </option>
                       <option value="BULLDOG">Bulldog</option>
                       <option value="DACHSHUND">Dachshund</option>
                       <option value="GOLDEN_RETRIEVER">Golden Retriever</option>
@@ -227,7 +220,6 @@ export const Form = () => {
                 </div>
 
                 <div className="forms-groups">
-                  {/* Sexo do Pet */}
                   <div className="form-group">
                     <label htmlFor="gender">Sexo:</label>
                     <select
@@ -236,13 +228,14 @@ export const Form = () => {
                       value={formData.gender}
                       onChange={handleChange}
                     >
-                      <option value="">Selecione o sexo</option>
+                      <option value="" disabled>
+                        Selecione o sexo
+                      </option>
                       <option value="MALE">Macho</option>
                       <option value="FEMALE">Fêmea</option>
                     </select>
                   </div>
 
-                  {/* Idade do Pet */}
                   <div className="form-group">
                     <label htmlFor="age">Idade (aproximada):</label>
                     <input
@@ -258,7 +251,6 @@ export const Form = () => {
                 </div>
 
                 <div className="forms-groups">
-                  {/* Cor do Pet */}
                   <div className="form-group">
                     <label htmlFor="color">Cor:</label>
                     <input
@@ -271,7 +263,6 @@ export const Form = () => {
                     />
                   </div>
 
-                  {/* Deficiência */}
                   <div className="form-group">
                     <label htmlFor="deficiencia">Deficiência:</label>
                     <select
@@ -280,7 +271,7 @@ export const Form = () => {
                       value={formData.deficiencia}
                       onChange={handleChange}
                     >
-                      <option value="">
+                      <option value="" disabled>
                         Informe se o pet possui alguma deficiência
                       </option>
                       <option value="sim">Sim</option>
@@ -290,7 +281,6 @@ export const Form = () => {
                 </div>
 
                 <div className="forms-groups">
-                  {/* Vacinado */}
                   <div className="form-group">
                     <label htmlFor="vacinado">Vacinado:</label>
                     <select
@@ -299,13 +289,14 @@ export const Form = () => {
                       value={formData.vacinado}
                       onChange={handleChange}
                     >
-                      <option value="">Informe se o pet é vacinado</option>
+                      <option value="" disabled>
+                        Informe se o pet é vacinado
+                      </option>
                       <option value="sim">Sim</option>
                       <option value="nao">Não</option>
                     </select>
                   </div>
 
-                  {/* Castrado */}
                   <div className="form-group">
                     <label htmlFor="castrado">Castrado:</label>
                     <select
@@ -314,14 +305,15 @@ export const Form = () => {
                       value={formData.castrado}
                       onChange={handleChange}
                     >
-                      <option value="">Informe se o pet é castrado</option>
+                      <option value="" disabled>
+                        Informe se o pet é castrado
+                      </option>
                       <option value="sim">Sim</option>
                       <option value="nao">Não</option>
                     </select>
                   </div>
                 </div>
 
-                {/* Endereço */}
                 <div className="form-group">
                   <label htmlFor="address">Endereço:</label>
                   <input
@@ -334,7 +326,6 @@ export const Form = () => {
                   />
                 </div>
 
-                {/* Sobre o Pet */}
                 <div className="form-group">
                   <label htmlFor="about">Sobre o Pet:</label>
                   <textarea
@@ -346,16 +337,17 @@ export const Form = () => {
                   />
                 </div>
 
-                {/* Botão de envio do formulário */}
-                <button type="submit" className="submit-btn">
-                  Cadastrar Pet
-                </button>
+                <div className="forms-groups">
+                  <button type="submit" className="submit-btn">
+                    Cadastrar Pet
+                  </button>
+                </div>
               </fieldset>
             </form>
           </div>
         </section>
       </main>
-      <Footer /> {/* Renderiza o componente Footer */}
+      <Footer />
     </>
   );
 };

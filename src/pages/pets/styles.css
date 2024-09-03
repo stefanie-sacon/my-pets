@@ -49,3 +49,15 @@
 .adocao-pets-content-box p {
   color: #6a6d78;
 }
+
+.pet-card img {
+  width: 400px;
+  max-width: 100%; /* Garante que a imagem não ultrapasse a largura do contêiner */
+  height: 200px;
+}
+
+.pet-card {
+  width: 100%;
+  max-width: 300px;
+  background-color: red;
+}
