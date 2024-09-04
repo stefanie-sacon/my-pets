@@ -491,9 +491,7 @@ nav li a:hover {
 /* Pets Perdidos Section */
 .pets-perdidos-section {
   padding: 92px 0;
-  background-color: rgb(255, 255, 255);
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-color: var(--background);
 }
 
 .pets-perdidos-container {

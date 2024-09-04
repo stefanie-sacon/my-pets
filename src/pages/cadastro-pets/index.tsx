@@ -20,7 +20,7 @@ interface FormData {
   kind: string;
 }
 
-export const Form = () => {
+export const CadastroPets = () => {
   const [formData, setFormData] = useState<FormData>({
     status: "",
     name: "",

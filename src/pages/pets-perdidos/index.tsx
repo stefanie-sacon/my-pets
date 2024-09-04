@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
-import { formatDistanceToNow } from "date-fns";
+import { formatDistanceToNowStrict } from "date-fns";
+import { ptBR } from "date-fns/locale";
 import { getPetStatusText } from "../../utils/string";
 import { Pet } from "../../models/Pet";
 
@@ -49,15 +50,26 @@ export const PetsPerdidos = () => {
                       src={pet.image_url}
                       alt={pet.name || "Imagem do pet"}
                     />
-                    <h3>{pet.name || "Nome Desconhecido"}</h3>
-                    <p>Status: {getPetStatusText(pet.status)}</p>
-                    <p>
-                      {formatDistanceToNow(new Date(pet.created_at), {
-                        addSuffix: true,
-                      })}
-                    </p>{" "}
-                    {/* Data relativa sem prefixo */}
-                    {/* Adicione outros detalhes do pet conforme necessário */}
+
+                    <div className="pet-card-content">
+                      <div className="pet-card-content-title">
+                        <h3>{pet.name || "Sem nome"}</h3>
+                        <p>{getPetStatusText(pet.status)}</p>
+                      </div>
+                      <div className="pet-card-content-text">
+                        <p>{pet.address}</p>
+
+                        <p>
+                          {formatDistanceToNowStrict(new Date(pet.created_at), {
+                            addSuffix: true,
+                            locale: ptBR,
+                          })
+                            .replace("há ", "")
+                            .replace("em ", "") + " atrás"}
+                        </p>
+                        {/* Adicione outros detalhes do pet conforme necessário */}
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>

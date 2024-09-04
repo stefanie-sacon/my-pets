@@ -8,7 +8,7 @@
 .adocao-title {
   display: grid;
   gap: 24px;
-  padding-bottom: 56px;
+  padding-bottom: 52px;
   align-items: center;
   text-align: center;
 }
@@ -58,6 +58,39 @@
 
 .pet-card {
   width: 100%;
-  max-width: 300px;
-  background-color: red;
+  max-width: 500px;
+  height: auto;
+  background-color: var(--white);
+  -webkit-box-shadow: 0px 9px 31px -15px rgba(204, 204, 204, 1);
+  -moz-box-shadow: 0px 9px 31px -15px rgba(204, 204, 204, 1);
+  box-shadow: 0px 9px 31px -15px rgba(204, 204, 204, 1);
+}
+
+.pet-card-content {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  gap: 8px;
+}
+
+.pet-card-content h3 {
+  font-size: 18px;
+}
+
+.pet-card-content p {
+  font-size: 14px;
+}
+
+.pet-card-content-title {
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+  align-items: center;
+}
+
+.pet-card-content-text {
+  display: flex;
+  gap: 4px;
+  justify-content: space-between;
+  align-items: center;
 }
