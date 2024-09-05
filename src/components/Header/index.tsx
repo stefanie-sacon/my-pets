@@ -36,6 +36,10 @@ export const Header = () => {
           <Link to="/pets" id="btn-adotaraqui">
             Adotar aqui
           </Link>
+          Ao logar no site, trocar o botão de entrar para um ícone de perfil, ao
+          clicar no perfil aparecer as opções: Meus Pets (Ao clicar levará para
+          a página com os Pets cadastrados com a conta) Editar (Onde levará para
+          uma página com os dados registrados na hora da criação da conta)
           <Link to="/login" id="btn-entrar">
             Entrar
           </Link>

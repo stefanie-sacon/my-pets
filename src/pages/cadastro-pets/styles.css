@@ -39,10 +39,6 @@ legend {
   font-weight: 500;
 }
 
-.form-group {
-  margin-bottom: 15px;
-}
-
 input,
 select,
 textarea,
@@ -84,19 +80,9 @@ textarea {
   resize: vertical;
 }
 
-.button-form {
-  display: grid;
-  justify-content: center;
-}
-
 .required::after {
   content: " *";
   color: red;
-}
-
-.forms-button {
-  display: flex;
-  justify-content: center;
 }
 
 /* Adicione ou modifique suas regras CSS para o formulário */
@@ -109,6 +95,7 @@ textarea {
   flex: 1 1 calc(50% - 16px); /* Ajusta o tamanho dos campos para ocupar 50% da largura menos o espaçamento */
   box-sizing: border-box;
   padding-right: 8px;
+  margin-bottom: 15px;
 }
 
 .form-group.full-width {
@@ -128,7 +115,7 @@ textarea {
   box-sizing: border-box;
 }
 
-.info-message {
+.info-message p {
   color: red;
   font-size: 0.9em;
   margin-top: 8px;
@@ -148,4 +135,13 @@ textarea {
 .input-error {
   border: 2px solid red;
   background-color: #ffe6e6;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end; /* Alinha o botão à direita */
+}
+
+.btn-submit {
+  width: fit-content; /* Define largura ajustada ao conteúdo */
 }
