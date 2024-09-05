@@ -144,3 +144,8 @@ textarea {
   width: 100%;
   box-sizing: border-box;
 }
+
+.input-error {
+  border: 2px solid red;
+  background-color: #ffe6e6;
+}

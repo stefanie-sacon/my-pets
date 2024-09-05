@@ -12,9 +12,9 @@ interface FormData {
   gender: string;
   age: string;
   color: string;
-  deficiencia: string;
-  vacinado: string;
-  castrado: string;
+  disability: string;
+  vaccinated: string;
+  neutered: string;
   address: string;
   about: string;
   kind: string;
@@ -30,9 +30,9 @@ export const CadastroPets = () => {
     gender: "",
     age: "",
     color: "",
-    deficiencia: "",
-    vacinado: "",
-    castrado: "",
+    disability: "",
+    vaccinated: "",
+    neutered: "",
     address: "",
     about: "",
     kind: "",
@@ -64,13 +64,55 @@ export const CadastroPets = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    const requiredFields = [
+      "status",
+      "image_url",
+      "size",
+      "kind",
+      "gender",
+      "disability",
+      "vaccinated",
+      "neutered",
+      "address",
+    ];
+
+    let hasErrors = false;
+
+    requiredFields.forEach((field) => {
+      const inputElement = document.getElementById(field) as
+        | HTMLInputElement
+        | HTMLSelectElement;
+
+      if (!inputElement || formData[field as keyof FormData] === "") {
+        if (inputElement) {
+          inputElement.classList.add("input-error");
+        }
+        hasErrors = true;
+      } else {
+        inputElement.classList.remove("input-error");
+      }
+    });
+
+    if (hasErrors) {
+      alert("Por favor, preencha todos os campos obrigatórios.");
+      return;
+    }
+
     try {
+      const sanitizedFormData = Object.keys(formData).reduce((acc, key) => {
+        acc[key] =
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          (formData as any)[key] === "" ? null : (formData as any)[key];
+        return acc;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      }, {} as any);
+
       const response = await fetch("http://localhost:3000/pets", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(sanitizedFormData),
       });
 
       if (response.ok) {
@@ -84,14 +126,14 @@ export const CadastroPets = () => {
           gender: "",
           age: "",
           color: "",
-          deficiencia: "",
-          vacinado: "",
-          castrado: "",
+          disability: "",
+          vaccinated: "",
+          neutered: "",
           address: "",
           about: "",
           kind: "",
         });
-        setStatusSelected(false); // Resetar status selecionado
+        setStatusSelected(false);
       } else {
         const errorData = await response.json();
         console.error("Erro no servidor:", errorData);
@@ -145,7 +187,7 @@ export const CadastroPets = () => {
                       <option value="LOOKING_FOR_OWNER">
                         Procurando tutor
                       </option>
-                      <option value="FOUND" hidden>
+                      <option value="FOUND" disabled>
                         Encontrado
                       </option>
                     </select>
@@ -182,17 +224,14 @@ export const CadastroPets = () => {
                       </div>
 
                       <div className="form-group">
-                        <label htmlFor="name" className="required">
-                          Nome:
-                        </label>
+                        <label htmlFor="name">Nome:</label>
                         <input
                           type="text"
                           id="name"
                           name="name"
                           value={formData.name}
                           onChange={handleChange}
-                          placeholder="Informe o nome do pet"
-                          required
+                          placeholder="Deixe em branco caso não tenha nome ou não saiba"
                         />
                       </div>
 
@@ -226,7 +265,7 @@ export const CadastroPets = () => {
                           required
                         >
                           <option value="" disabled>
-                            Selecione o porte
+                            Selecione o porte do pet
                           </option>
                           <option value="SMALL">Pequeno</option>
                           <option value="MEDIUM">Médio</option>
@@ -246,9 +285,49 @@ export const CadastroPets = () => {
                           }
                         >
                           <option value="" disabled>
-                            Selecione a raça
+                            Selecione a raça do pet
                           </option>
-                          {/* Adicione as opções de raça aqui */}
+                          <option value="UNKNOWN">Desconhecido</option>
+                          <option value="SRD">SRD (Sem Raça Definida)</option>
+                          <option value="ABYSSINIAN">Abissínio</option>
+                          <option value="AMERICAN_SHORTHAIR">
+                            American Shorthair
+                          </option>
+                          <option value="BEAGLE">Beagle</option>
+                          <option value="BENGAL">Bengal</option>
+                          <option value="BOXER">Boxer</option>
+                          <option value="BRITISH_SHORTHAIR">
+                            British Shorthair
+                          </option>
+                          <option value="CHIHUAHUA">Chihuahua</option>
+                          <option value="COCKER_SPANIEL">Cocker Spaniel</option>
+                          <option value="DACHSHUND">Dachshund</option>
+                          <option value="GOLDEN_RETRIEVER">
+                            Golden Retriever
+                          </option>
+                          <option value="LABRADOR">Labrador</option>
+                          <option value="LHASA_APSO">Lhasa Apso</option>
+                          <option value="MALTESE">Maltês</option>
+                          <option value="MANX">Manx</option>
+                          <option value="MAINE_COON">Maine Coon</option>
+                          <option value="NORMAN">Norman</option>
+                          <option value="PERSIAN">Persa</option>
+                          <option value="PINSCHER">Pinscher</option>
+                          <option value="POODLE">Poodle</option>
+                          <option value="PUG">Pug</option>
+                          <option value="RAGDOLL">Ragdoll</option>
+                          <option value="ROTTWEILER">Rottweiler</option>
+                          <option value="SCOTTISH_FOLD">Scottish Fold</option>
+                          <option value="SHIH_TZU">Shih Tzu</option>
+                          <option value="SIAMESE">Siamês</option>
+                          <option value="SPHYNX">Sphynx</option>
+                          <option value="SPITZ_ALEMAO">Spitz Alemão</option>
+                          <option value="SIBERIAN_HUSKY">
+                            Husky Siberiano
+                          </option>
+                          <option value="TURKISH_ANGORA">Angorá Turco</option>
+                          <option value="YORKSHIRE">Yorkshire</option>
+                          <option value="OTHER">Outra</option>
                         </select>
                       </div>
 
@@ -267,7 +346,7 @@ export const CadastroPets = () => {
                           required
                         >
                           <option value="" disabled>
-                            Selecione o sexo
+                            Selecione o sexo do pet
                           </option>
                           <option value="MALE">Macho</option>
                           <option value="FEMALE">Fêmea</option>
@@ -288,9 +367,7 @@ export const CadastroPets = () => {
                       </div>
 
                       <div className="form-group">
-                        <label htmlFor="color" className="required">
-                          Cor:
-                        </label>
+                        <label htmlFor="color">Cor:</label>
                         <input
                           type="text"
                           id="color"
@@ -298,21 +375,20 @@ export const CadastroPets = () => {
                           value={formData.color}
                           onChange={handleChange}
                           placeholder="Informe a cor do pet"
-                          required
                         />
                       </div>
 
                       <div className="form-group">
-                        <label htmlFor="deficiencia" className="required">
+                        <label htmlFor="disability" className="required">
                           Deficiência:
                         </label>
                         <select
-                          id="deficiencia"
-                          name="deficiencia"
-                          value={formData.deficiencia}
+                          id="disability"
+                          name="disability"
+                          value={formData.disability}
                           onChange={handleChange}
                           className={
-                            formData.deficiencia === ""
+                            formData.disability === ""
                               ? "placeholder-hidden"
                               : ""
                           }
@@ -321,66 +397,71 @@ export const CadastroPets = () => {
                           <option value="" disabled>
                             Informe se o pet possui alguma deficiência
                           </option>
-                          <option value="true">Visão</option>
-                          <option value="false">Audição</option>
-                          <option value="true">Locomoção</option>
-                          <option value="false">Não possui</option>
-                          <option value="false">Outras</option>
+                          <option value="NOT_APPLICABLE">Não possui</option>
+                          <option value="HEARING">Audição</option>
+                          <option value="LOCOMOTION">Locomoção</option>
+                          <option value="VISION">Visual</option>
+                          <option value="UNKNOWN">Desconhecido</option>
+                          <option value="OTHERS">Outras</option>
                         </select>
                       </div>
 
                       <div className="form-group">
-                        <label htmlFor="vacinado" className="required">
+                        <label htmlFor="vaccinated" className="required">
                           Vacinado:
                         </label>
                         <select
-                          id="vacinado"
-                          name="vacinado"
-                          value={formData.vacinado}
+                          id="vaccinated"
+                          name="vaccinated"
+                          value={formData.vaccinated}
                           onChange={handleChange}
                           className={
-                            formData.vacinado === "" ? "placeholder-hidden" : ""
+                            formData.vaccinated === ""
+                              ? "placeholder-hidden"
+                              : ""
                           }
                           required
                         >
                           <option value="" disabled>
                             Informe se o pet é vacinado
                           </option>
-                          <option value="true">Sim</option>
-                          <option value="false">Não</option>
-                          <option value="false">Parcialmente</option>
-                          <option value="false">Desconhecido</option>
-                          <option value="false">Não se aplica</option>
+                          <option value="YES">Sim</option>
+                          <option value="NO">Não</option>
+                          <option value="PARTIALLY">Parcialmente</option>
+                          <option value="UNKNOWN">Desconhecido</option>
+                          <option value="NOT_APPLICABLE">Não se aplica</option>
                         </select>
                       </div>
 
                       <div className="form-group">
-                        <label htmlFor="castrado" className="required">
+                        <label htmlFor="neutered" className="required">
                           Castrado:
                         </label>
                         <select
-                          id="castrado"
-                          name="castrado"
-                          value={formData.castrado}
+                          id="neutered"
+                          name="neutered"
+                          value={formData.neutered}
                           onChange={handleChange}
                           className={
-                            formData.castrado === "" ? "placeholder-hidden" : ""
+                            formData.neutered === "" ? "placeholder-hidden" : ""
                           }
                           required
                         >
                           <option value="" disabled>
                             Informe se o pet é castrado
                           </option>
-                          <option value="true">Sim</option>
-                          <option value="false">Não</option>
-                          <option value="false">Em processo</option>
-                          <option value="false">Desconhecido</option>
-                          <option value="false">Não se aplica</option>
+                          <option value="YES">Sim</option>
+                          <option value="NO">Não</option>
+                          <option value="IN_PROCESS">Em processo</option>
+                          <option value="UNKNOWN">Desconhecido</option>
+                          <option value="NOT_APPLICABLE">Não se aplica</option>
                         </select>
                       </div>
 
                       <div className="form-group full-width">
-                        <label htmlFor="address">Endereço:</label>
+                        <label htmlFor="address" className="required">
+                          Endereço:
+                        </label>
                         <input
                           type="text"
                           id="address"
@@ -388,6 +469,7 @@ export const CadastroPets = () => {
                           value={formData.address}
                           onChange={handleChange}
                           placeholder="Informe o endereço onde o pet foi visto"
+                          required
                         />
                       </div>
 

@@ -33,11 +33,11 @@ export const Header = () => {
         </ul>
 
         <div className="buttons-nav">
-          <Link to="/login" id="btn-entrar">
-            Entrar
-          </Link>
           <Link to="/pets" id="btn-adotaraqui">
             Adotar aqui
+          </Link>
+          <Link to="/login" id="btn-entrar">
+            Entrar
           </Link>
         </div>
 
