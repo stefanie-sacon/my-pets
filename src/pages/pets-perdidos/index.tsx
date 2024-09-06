@@ -1,14 +1,25 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { formatDistanceToNowStrict } from "date-fns";
 import { ptBR } from "date-fns/locale";
 import { getPetStatusText } from "../../utils/string";
 import { Pet } from "../../models/Pet";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export const PetsPerdidos = () => {
   const [pets, setPets] = useState<Pet[]>([]);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setIsAuthenticated(!!user);
+    });
+    return () => unsubscribe();
+  }, []);
 
   useEffect(() => {
     fetch("http://localhost:3000/pets") // Substitua pela URL do seu backend
@@ -22,6 +33,14 @@ export const PetsPerdidos = () => {
       })
       .catch((error) => console.error("Erro ao buscar pets:", error));
   }, []);
+
+  const handleAnunciarClick = () => {
+    if (!isAuthenticated) {
+      alert("Você precisa estar logado para anunciar um pet.");
+    } else {
+      navigate("/cadastropets");
+    }
+  };
 
   return (
     <>
@@ -39,9 +58,9 @@ export const PetsPerdidos = () => {
                 </p>
               </div>
               <div className="btn-anunciar">
-                <Link to="/cadastropets" id="btn-anunciar">
+                <button id="btn-anunciar" onClick={handleAnunciarClick}>
                   Anunciar aqui
-                </Link>
+                </button>
               </div>
               <div className="pets-perdidos-boxes">
                 {pets.map((pet) => (

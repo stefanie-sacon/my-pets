@@ -54,7 +54,7 @@ export const CadastroPets = () => {
     "Pug",
     "Rottweiler",
     "Shih Tzu",
-    "Siberian Husky",
+    "Husky Siberiano",
     "Yorkshire",
     "Outra",
   ];

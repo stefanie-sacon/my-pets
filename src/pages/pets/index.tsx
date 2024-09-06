@@ -1,14 +1,25 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { ptBR } from "date-fns/locale";
 import "./styles.css";
 import { Pet } from "../../models/Pet";
 import { formatDistanceToNowStrict } from "date-fns/formatDistanceToNowStrict";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export const Pets = () => {
   const [pets, setPets] = useState<Pet[]>([]);
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setIsAuthenticated(!!user);
+    });
+    return () => unsubscribe();
+  }, []);
 
   useEffect(() => {
     fetch("http://localhost:3000/pets") // Substitua pela URL do seu backend
@@ -20,6 +31,14 @@ export const Pets = () => {
       })
       .catch((error) => console.error("Erro ao buscar pets:", error));
   }, []);
+
+  const handleCadastroClick = () => {
+    if (!isAuthenticated) {
+      alert("Você precisa estar logado para cadastrar um pet.");
+    } else {
+      navigate("/cadastropets");
+    }
+  };
 
   return (
     <>
@@ -35,9 +54,9 @@ export const Pets = () => {
                 continuidade a adoção do seu novo aumigo.
               </p>
               <div className="btn-anunciar">
-                <Link to="/cadastropets" id="btn-anunciar">
+                <button id="btn-anunciar" onClick={handleCadastroClick}>
                   Cadastrar pet
-                </Link>
+                </button>
               </div>
             </div>
             <div className="adocao-pets-boxes">
