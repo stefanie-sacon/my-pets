@@ -1,11 +1,11 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const handleLogout = () => {
-    navigate("/login");
-  };
+  // const handleLogout = () => {
+  //   navigate("/login");
+  // };
 
   return (
     <header className="container">
