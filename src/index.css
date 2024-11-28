@@ -309,7 +309,7 @@ nav li a:hover {
 
 /* Hero Section */
 .hero-section {
-  background: url(assets/img/background-hero.jpg) no-repeat;
+  background: url(/assets/img/background-hero.jpg) no-repeat;
   background-position: center;
   background-size: cover;
   padding: 308px 0;
@@ -376,7 +376,7 @@ nav li a:hover {
 /* Pets Section */
 .pets-container {
   padding: 92px 0;
-  background-image: url(assets/img/pet-background.png);
+  background-image: url(/assets/img/pet-background.png);
   background-size: cover;
   background-repeat: no-repeat;
 }
