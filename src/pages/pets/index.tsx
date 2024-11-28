@@ -1,43 +1,178 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
 import { ptBR } from "date-fns/locale";
 import "./styles.css";
-import { Pet } from "../../models/Pet";
+import { Pet, PetStatus } from "../../models/Pet";
 import { formatDistanceToNowStrict } from "date-fns/formatDistanceToNowStrict";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 export const Pets = () => {
-  const [pets, setPets] = useState<Pet[]>([]);
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [pets] = useState<Pet[]>([
+    {
+      id: "8032c151-6a84-461c-a5f7-8ea5b41e12ae",
+      status: PetStatus.ADOPTION,
+      ngo_id: null,
+      image_url:
+        "https://img.odcdn.com.br/wp-content/uploads/2023/04/Vira-lata-caramelo.jpg",
+      name: "Caramelo",
+      age: 0,
+      size: "MEDIUM",
+      gender: "MALE",
+      kind: "DOG",
+      race: null,
+      color: null,
+      disability: "NOT_APPLICABLE",
+      vaccinated: "UNKNOWN",
+      neutered: "UNKNOWN",
+      address: "ONG Con Animal",
+      about: null,
+      created_at: "2024-09-04T23:56:49.181Z",
+    },
+    {
+      id: "1c01a274-850c-445b-9353-34df8140953c",
+      status: PetStatus.ADOPTION,
+      ngo_id: null,
+      image_url:
+        "https://www.vilavelha.es.gov.br/adocaodeanimais/fotos/WhatsApp%20Image%202024-08-30%20at%2011.22.36.jpeg",
+      name: "Lupi",
+      age: 4,
+      size: "MEDIUM",
+      gender: "MALE",
+      kind: "DOG",
+      race: "LHASA_APSO",
+      color: "Castanho",
+      disability: "NOT_APPLICABLE",
+      vaccinated: "YES",
+      neutered: "YES",
+      address: "ONG Laika",
+      about: "Lindo e perfeito",
+      created_at: "2024-09-05T00:10:37.142Z",
+    },
+    {
+      id: "1c01a274-850c-445b-9353-34df8140953c",
+      status: PetStatus.ADOPTION,
+      ngo_id: null,
+      image_url:
+        "https://www.acidadeon.com/araraquara/wp-content/uploads/sites/4/2024/01/Sabado-tem-Campanha-de-Adocao-de-Animais-Especial-Filhotes.jpg",
+      name: "Pitoco",
+      age: 4,
+      size: "MEDIUM",
+      gender: "MALE",
+      kind: "DOG",
+      race: "LHASA_APSO",
+      color: "Castanho",
+      disability: "NOT_APPLICABLE",
+      vaccinated: "YES",
+      neutered: "YES",
+      address: "Projeto Focinho Carente",
+      about: "Lindo e perfeito",
+      created_at: "2024-09-05T00:10:37.142Z",
+    },
+    {
+      id: "1c01a274-850c-445b-9353-34df8140953c",
+      status: PetStatus.ADOPTION,
+      ngo_id: null,
+      image_url:
+        "https://www.policiacivil.go.gov.br/wp-content/uploads/2023/04/whatsapp-image-2023-04-15-at-10.56.40-1.jpeg",
+      name: "Lola",
+      age: 4,
+      size: "MEDIUM",
+      gender: "MALE",
+      kind: "DOG",
+      race: "LHASA_APSO",
+      color: "Castanho",
+      disability: "NOT_APPLICABLE",
+      vaccinated: "YES",
+      neutered: "YES",
+      address: "ONG Con Animal",
+      about: "Lindo e perfeito",
+      created_at: "2024-09-05T00:10:37.142Z",
+    },
+    {
+      id: "1c01a274-850c-445b-9353-34df8140953c",
+      status: PetStatus.ADOPTION,
+      ngo_id: null,
+      image_url:
+        "https://imagens.usp.br/wp-content/uploads/Festival-Jaya_Feira-Ado%C3%A7%C3%A3o_231-18_Foto-Cec%C3%ADlia-Bastos-220.jpg",
+      name: "Lucky",
+      age: 4,
+      size: "MEDIUM",
+      gender: "MALE",
+      kind: "DOG",
+      race: "LHASA_APSO",
+      color: "Castanho",
+      disability: "NOT_APPLICABLE",
+      vaccinated: "YES",
+      neutered: "YES",
+      address: "ONG Ama",
+      about: "Lindo e perfeito",
+      created_at: "2024-09-05T00:10:37.142Z",
+    },
+    {
+      id: "1c01a274-850c-445b-9353-34df8140953c",
+      status: PetStatus.ADOPTION,
+      ngo_id: null,
+      image_url:
+        "https://www.reporterdiario.com.br/wp-content/uploads/2024/03/Design-sem-nome.png",
+      name: "Simba",
+      age: 4,
+      size: "MEDIUM",
+      gender: "MALE",
+      kind: "DOG",
+      race: "LHASA_APSO",
+      color: "Castanho",
+      disability: "NOT_APPLICABLE",
+      vaccinated: "YES",
+      neutered: "YES",
+      address: "ONG Laika",
+      about: "Lindo e perfeito",
+      created_at: "2024-09-05T00:10:37.142Z",
+    },
+    {
+      id: "1c01a274-850c-445b-9353-34df8140953c",
+      status: PetStatus.ADOPTION,
+      ngo_id: null,
+      image_url:
+        "https://www.petelegante.com.br/media/dicas/ado%C3%A7%C3%A3o-de-cachorro-filhote.jpg",
+      name: "Zeus",
+      age: 4,
+      size: "MEDIUM",
+      gender: "MALE",
+      kind: "DOG",
+      race: "LHASA_APSO",
+      color: "Castanho",
+      disability: "NOT_APPLICABLE",
+      vaccinated: "YES",
+      neutered: "YES",
+      address: "Projeto Focinho Carente",
+      about: "Lindo e perfeito",
+      created_at: "2024-09-05T00:10:37.142Z",
+    },
+    {
+      id: "1c01a274-850c-445b-9353-34df8140953c",
+      status: PetStatus.ADOPTION,
+      ngo_id: null,
+      image_url: "https://ccz.sjc.sp.gov.br/imagens/animais/2502_1.jpg",
+      name: "Juca",
+      age: 4,
+      size: "MEDIUM",
+      gender: "MALE",
+      kind: "DOG",
+      race: "LHASA_APSO",
+      color: "Castanho",
+      disability: "NOT_APPLICABLE",
+      vaccinated: "YES",
+      neutered: "YES",
+      address: "ONG Ama",
+      about: "Lindo e perfeito",
+      created_at: "2024-09-05T00:10:37.142Z",
+    },
+  ]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setIsAuthenticated(!!user);
-    });
-    return () => unsubscribe();
-  }, []);
-
-  useEffect(() => {
-    fetch("http://localhost:3000/pets") // Substitua pela URL do seu backend
-      .then((response) => response.json())
-      .then((data: Pet[]) => {
-        // Filtrando pets com status "ADOPTION"
-        const adoptionPets = data.filter((pet) => pet.status === "ADOPTION");
-        setPets(adoptionPets);
-      })
-      .catch((error) => console.error("Erro ao buscar pets:", error));
-  }, []);
-
   const handleCadastroClick = () => {
-    if (!isAuthenticated) {
-      alert("Você precisa estar logado para cadastrar um pet.");
-    } else {
-      navigate("/cadastropets");
-    }
+    navigate("/cadastropets");
   };
 
   return (
@@ -62,7 +197,7 @@ export const Pets = () => {
             <div className="adocao-pets-boxes">
               {pets.map((pet) => (
                 <div key={pet.id} className="pet-card">
-                  <img src={pet.image_url} alt={pet.name} />
+                  <img src={pet.image_url} alt={pet.name ?? "Pet"} />
                   <div className="pet-card-content">
                     <div className="pet-card-content-title">
                       <h3>{pet.name || "Sem nome"}</h3>

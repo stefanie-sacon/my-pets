@@ -25,7 +25,8 @@
 .ongs-page-title {
   display: grid;
   text-align: center;
-  gap: 24px;
+  padding-bottom: 32px;
+  gap: 28px;
 }
 
 .ongs-page-boxes {

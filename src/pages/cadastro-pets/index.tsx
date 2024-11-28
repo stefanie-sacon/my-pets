@@ -18,6 +18,7 @@ interface FormData {
   address: string;
   about: string;
   kind: string;
+  ngo: string; // Novo campo para a ONG
 }
 
 export const CadastroPets = () => {
@@ -36,6 +37,7 @@ export const CadastroPets = () => {
     address: "",
     about: "",
     kind: "",
+    ngo: "", // Inicializando o novo campo
   });
 
   const [races, setRaces] = useState<string[]>([]);
@@ -72,6 +74,15 @@ export const CadastroPets = () => {
     "Scottish Fold",
     "Angorá Turco",
     "Outra",
+  ];
+
+  const ngos = [
+    { value: "NOT_APPLICABLE", label: "Não se aplica" },
+    { value: "ONG_AMA", label: "ONG Ama" },
+    { value: "ONG_LAIKA", label: "ONG Laika" },
+    { value: "ONG_CON_ANIMAL", label: "ONG Con Animal" },
+    { value: "ONG_FOCINHO_CARENTE", label: "Projeto Focinho Carente" },
+    { value: "OTHER", label: "Outra" },
   ];
 
   const handleChange = (
@@ -162,6 +173,7 @@ export const CadastroPets = () => {
           address: "",
           about: "",
           kind: "",
+          ngo: "", // Resetando o novo campo
         });
         setRaces([]);
       } else {
@@ -310,9 +322,7 @@ export const CadastroPets = () => {
                       </div>
 
                       <div className="form-group">
-                        <label htmlFor="size" className="required">
-                          Tamanho do Pet:
-                        </label>
+                        <label htmlFor="size">Tamanho do Pet:</label>
                         <select
                           id="size"
                           name="size"
@@ -380,9 +390,7 @@ export const CadastroPets = () => {
                       </div>
 
                       <div className="form-group">
-                        <label htmlFor="disability" className="required">
-                          Deficiência:
-                        </label>
+                        <label htmlFor="disability">Deficiência:</label>
                         <select
                           id="disability"
                           name="disability"
@@ -399,16 +407,16 @@ export const CadastroPets = () => {
                             Informe se o pet possui alguma deficiência
                           </option>
                           <option value="NONE">Nenhuma</option>
-                          <option value="BLIND">Cego</option>
-                          <option value="DEAF">Surdo</option>
-                          <option value="OTHER">Outra</option>
+                          <option value="LOCOMOTION">Locomoção</option>
+                          <option value="VISION">Cego</option>
+                          <option value="HEARING">Surdo</option>
+                          <option value="UNKNOWN">Desconhecido</option>
+                          <option value="OTHERS">Outra</option>
                         </select>
                       </div>
 
                       <div className="form-group">
-                        <label htmlFor="vaccinated" className="required">
-                          Vacinado:
-                        </label>
+                        <label htmlFor="vaccinated">Vacinado:</label>
                         <select
                           id="vaccinated"
                           name="vaccinated"
@@ -426,14 +434,14 @@ export const CadastroPets = () => {
                           </option>
                           <option value="YES">Sim</option>
                           <option value="NO">Não</option>
+                          <option value="PARTIALLY">Parcialmente</option>
                           <option value="UNKNOWN">Desconhecido</option>
+                          <option value="NOT_APPLICABLE">Não se aplica</option>
                         </select>
                       </div>
 
                       <div className="form-group">
-                        <label htmlFor="neutered" className="required">
-                          Castrado:
-                        </label>
+                        <label htmlFor="neutered">Castrado:</label>
                         <select
                           id="neutered"
                           name="neutered"
@@ -449,15 +457,14 @@ export const CadastroPets = () => {
                           </option>
                           <option value="YES">Sim</option>
                           <option value="NO">Não</option>
+                          <option value="IN_PROCESS">Em processo</option>
                           <option value="UNKNOWN">Desconhecido</option>
+                          <option value="NOT_APPLICABLE">Não se aplica</option>
                         </select>
                       </div>
 
-                      {/* Ajustando o endereço e observações para cada um ocupar uma linha horizontal */}
-                      <div className="form-group full-width">
-                        <label htmlFor="address" className="required">
-                          Localização:
-                        </label>
+                      <div className="form-group">
+                        <label htmlFor="address">Localização:</label>
                         <input
                           type="text"
                           id="address"
@@ -465,12 +472,34 @@ export const CadastroPets = () => {
                           value={formData.address}
                           onChange={handleChange}
                           required
-                          placeholder="Informe endereço ou ponto de referência"
+                          placeholder="Informe o endereço de onde o pet está ou foi visto pela última vez"
                         />
                       </div>
 
+                      <div className="form-group">
+                        <label htmlFor="ngo">ONG:</label>
+                        <select
+                          id="ngo"
+                          name="ngo"
+                          value={formData.ngo}
+                          onChange={handleChange}
+                          className={
+                            formData.ngo === "" ? "placeholder-hidden" : ""
+                          }
+                        >
+                          <option value="" disabled>
+                            Selecione a ONG que o pet está localizado
+                          </option>
+                          {ngos.map((ngo) => (
+                            <option key={ngo.value} value={ngo.value}>
+                              {ngo.label}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+
                       <div className="form-group full-width">
-                        <label htmlFor="about">Observações:</label>
+                        <label htmlFor="about">Sobre:</label>
                         <textarea
                           id="about"
                           name="about"
@@ -483,7 +512,6 @@ export const CadastroPets = () => {
                   )}
                 </div>
               </fieldset>
-
               <div className="button-container">
                 <button type="submit" className="btn-submit">
                   Cadastrar Pet

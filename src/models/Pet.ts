@@ -5,22 +5,22 @@ export enum PetStatus {
   FOUND = "FOUND",
 }
 
-// TODO: ajustar tipagem
 export interface Pet {
   id: string;
   status: PetStatus;
-  name: string;
+  name: string | null;
+  ngo_id?: string | null;
   image_url: string;
   size: string;
-  race: string;
+  race: string | null;
   gender: string;
   age: number;
-  color: string;
-  deficiencia: string;
-  vacinado: string;
-  castrado: string;
+  color: string | null;
+  disability: string;
+  vaccinated: string;
+  neutered: string;
   address: string;
-  about: string;
+  about: string | null;
   kind: string;
   created_at: string;
 }

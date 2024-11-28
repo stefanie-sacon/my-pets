@@ -18,7 +18,10 @@ export const Ongs = () => {
                   bem-estar dos animais.
                 </p>
                 <div className="btn-anunciar">
-                  <Link to="" id="btn-anunciar">
+                  <Link
+                    to="https://wa.me/5549998331152?text=Tenho%20interesse%20em%20ser%20parceiro%20do%20My%20Pet's.%20Quais%20s%C3%A3o%20os%20pr%C3%B3ximos%20passos?"
+                    id="btn-anunciar"
+                  >
                     Fazer parte
                   </Link>
                 </div>

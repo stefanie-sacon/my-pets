@@ -11,6 +11,7 @@ import { CadastroPets } from "./pages/cadastro-pets";
 import { Login } from "./pages/login";
 import { Registro } from "./pages/registro";
 import { RedefinirSenha } from "./pages/redefinir-senha";
+import { AboutPet } from "./pages/about-pet";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
   {
     path: "/redefinirsenha",
     element: <RedefinirSenha />,
+  },
+  {
+    path: "/sobreopet",
+    element: <AboutPet />,
   },
 ]);
 

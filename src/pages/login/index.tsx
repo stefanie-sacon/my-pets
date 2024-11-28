@@ -1,14 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../services/firebase";
 import "./styles.css";
-
-// Definindo a interface para erros do Firebase
-interface FirebaseError {
-  code: string;
-  message: string;
-}
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -21,58 +13,12 @@ export const Login = () => {
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
-      const user = userCredential.user;
-      console.log("Usuário logado com sucesso:", user);
+    setSuccessMessage("Login realizado com sucesso! Você será redirecionado.");
+    setErrorMessage("");
 
-      // Define a mensagem de sucesso e redireciona para a página principal ou outra página desejada
-      setSuccessMessage(
-        "Login realizado com sucesso! Você será redirecionado."
-      );
-      setErrorMessage(""); // Limpa a mensagem de erro, se houver
-
-      setTimeout(() => {
-        navigate("/"); // Redireciona para a página principal após o login
-      }, 2000); // Redireciona após 2 segundos para mostrar a mensagem de sucesso
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        console.error("Erro ao fazer login:", error.message);
-
-        // Verifica se o erro é do tipo FirebaseError
-        if ("code" in error) {
-          const firebaseError = error as FirebaseError; // Agora usamos o tipo correto
-          switch (firebaseError.code) {
-            case "auth/wrong-password":
-              setErrorMessage(
-                "Senha incorreta. Por favor, verifique sua senha."
-              );
-              break;
-            case "auth/user-not-found":
-              setErrorMessage(
-                "Nenhum usuário encontrado com esse email. Verifique o email ou registre-se."
-              );
-              break;
-            case "auth/invalid-email":
-              setErrorMessage(
-                "O email fornecido é inválido. Por favor, verifique o email."
-              );
-              break;
-            default:
-              setErrorMessage("Erro ao fazer login. Tente novamente.");
-          }
-        } else {
-          setErrorMessage("Erro inesperado. Tente novamente.");
-        }
-      } else {
-        setErrorMessage("Erro inesperado. Tente novamente.");
-      }
-      setSuccessMessage(""); // Limpa a mensagem de sucesso, se houver
-    }
+    setTimeout(() => {
+      navigate("/");
+    }, 2000);
   };
 
   return (
